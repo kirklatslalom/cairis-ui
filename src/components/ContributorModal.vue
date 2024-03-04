@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-modal ref="contributorModal" :title="this.dialogTitle"  @ok="onOk">
@@ -26,7 +26,7 @@ Authors: Shamal Faily
       <ul>
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
-    </p> 
+    </p>
     <b-card>
       <b-form-group label="First name" label-class="font-weight-bold text-md-left" label-for="theFirstNameInput">
         <b-form-input id="theFirstNameInput" v-model="objt.firstName" type="text" required>
@@ -47,8 +47,8 @@ Authors: Shamal Faily
           <b-form-radio value="Scribe">Scribe</b-form-radio>
         </b-form-radio-group>
       </b-form-group>
-    </b-card> 
-  </b-modal> 
+    </b-card>
+  </b-modal>
 </template>
 
 <script>
@@ -109,7 +109,7 @@ Authors: Shamal Faily
         else {
           this.$emit('contributor-update',{contributor : this.objt,update : this.contributor.update,index: this.contributor.update ? this.contributor.index : -1});
           this.$refs.contributorModal.hide();
-        } 
+        }
       }
     }
   }

@@ -3,7 +3,7 @@
 [![Build Status](https://secure.travis-ci.org/cairis-platform/cairis-ui.png?branch=master)](http://travis-ci.org/cairis-platform/cairis-ui)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcairis-platform%2Fcairis-ui.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcairis-platform%2Fcairis-ui?ref=badge_shield)
 
-UI for CAIRIS.  
+UI for CAIRIS.
 
 ## Project setup
 ```

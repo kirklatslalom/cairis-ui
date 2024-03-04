@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="riskmodel">
@@ -27,7 +27,7 @@ Authors: Shamal Faily
       <b-row>
         <b-col>
           <b-form-group label="Environment" label-for="riskModelEnvironment">
-            <dimension-select ref="riskModelEnvironment" id="riskModelEnvironment" dimension="environment" v-on:dimension-select-change="environmentSelected" v-on:dimension-items-updated="environmentsLoaded" /> 
+            <dimension-select ref="riskModelEnvironment" id="riskModelEnvironment" dimension="environment" v-on:dimension-select-change="environmentSelected" v-on:dimension-items-updated="environmentsLoaded" />
           </b-form-group>
         </b-col>
         <b-col v-if="theEnvironmentName != ''">
@@ -37,7 +37,7 @@ Authors: Shamal Faily
         </b-col>
         <b-col v-if="theEnvironmentName != ''">
           <b-form-group label="Name" label-form="riskModelName">
-            <dimension-select id="riskModelName" ref="riskModelName" :environment="theEnvironmentName" :dimensionUrl="nameURI" includeall v-on:dimension-select-change="nameSelected" v-on:dimension-items-updated="namesLoaded" /> 
+            <dimension-select id="riskModelName" ref="riskModelName" :environment="theEnvironmentName" :dimensionUrl="nameURI" includeall v-on:dimension-select-change="nameSelected" v-on:dimension-items-updated="namesLoaded" />
           </b-form-group>
         </b-col>
         <b-col v-if="theEnvironmentName != ''">
@@ -160,7 +160,7 @@ export default {
         this.filterParameters.tagged = (this.isTagged == true ? '1' : '0');
         this.$refs.riskModelName.selected = 'all';
       }
-    }, 
+    },
     nameChanged(objtName) {
       this.filterParameters.object_name = objtName;
       this.filterParameters.tagged = (this.isTagged == true ? '1' : '0');

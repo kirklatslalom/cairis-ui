@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-modal ref="tcDialog" :title="this.dialogTitle"  @ok="onOk">
@@ -26,7 +26,7 @@ Authors: Shamal Faily
       <ul>
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
-    </p> 
+    </p>
     <b-card>
       <b-form-group label="User goal" label-class="font-weight-bold text-sm-left" label-for="theUserGoalSelect" >
         <dimension-select id="theUserGoalSelect" dimension='user_goal' :existing="taskContributions" :initial="this.taskContribution.contribution.theDestination" v-on:dimension-select-change="userGoalSelected" v-on:dimension-items-updated="userGoalsLoaded" />
@@ -35,7 +35,7 @@ Authors: Shamal Faily
         <b-form-select id="theContributionSelect" v-model="contribution.contribution.theContribution" :options="contributionTypes" class="mb-3" required />
       </b-form-group>
     </b-card>
-  </b-modal> 
+  </b-modal>
 </template>
 
 <script>

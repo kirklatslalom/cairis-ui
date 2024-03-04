@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,16 +17,16 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="countermeasure">
-    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addCountermeasureEnvironmentProperty"/> 
-    <dimension-modal ref="roleDialog" dimension="role" :existing="roleNames" v-on:dimension-modal-update="addObjectRole"/> 
-    <dimension-modal ref="reqDialog" dimension="requirement" :existing="requirementNames" v-on:dimension-modal-update="addCountermeasureRequirement"/> 
-    <countermeasure-participant-modal v-if="objt.theEnvironmentProperties.length" ref="participantDialog" :taskParticipant="selectedParticipant" v-on:countermeasure-participant-update="updateParticipant"/> 
-    <countermeasure-target-modal v-if="objt.theEnvironmentProperties.length" ref="targetDialog" :countermeasureTarget="selectedTarget" :environment="environmentName" :requirements="requirementNames" v-on:countermeasure-target-update="updateTarget"/> 
-    <property-modal ref="propertyDialog" :securityProperty="selectedProperty" v-on:property-update="updateProperty"/> 
+    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addCountermeasureEnvironmentProperty"/>
+    <dimension-modal ref="roleDialog" dimension="role" :existing="roleNames" v-on:dimension-modal-update="addObjectRole"/>
+    <dimension-modal ref="reqDialog" dimension="requirement" :existing="requirementNames" v-on:dimension-modal-update="addCountermeasureRequirement"/>
+    <countermeasure-participant-modal v-if="objt.theEnvironmentProperties.length" ref="participantDialog" :taskParticipant="selectedParticipant" v-on:countermeasure-participant-update="updateParticipant"/>
+    <countermeasure-target-modal v-if="objt.theEnvironmentProperties.length" ref="targetDialog" :countermeasureTarget="selectedTarget" :environment="environmentName" :requirements="requirementNames" v-on:countermeasure-target-update="updateTarget"/>
+    <property-modal ref="propertyDialog" :securityProperty="selectedProperty" v-on:property-update="updateProperty"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -68,17 +68,17 @@ Authors: Shamal Faily
         <b-card header="Environments" class="text-left">
           <template slot="header">
             <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addEnvironment"/> Environment
-          </template> 
+          </template>
           <b-row>
             <b-col sm="12">
               <b-tabs pills v-model="envPropIndex">
                 <b-tab v-for="envProp in this.objt.theEnvironmentProperties" :key="envProp.theEnvironmentName" :title=envProp.theName>
                   <template slot="title">
                     <font-awesome-icon icon="minus" :style="{color: 'red'}" @click="deleteEnvironment(envProp.theEnvironmentName)"/>  {{envProp.theEnvironmentName}}
-                  </template> 
-                </b-tab> 
+                  </template>
+                </b-tab>
                </b-tabs>
-             </b-col> 
+             </b-col>
           </b-row>
           <b-row v-if="this.objt.theEnvironmentProperties.length">
             <b-col md="12">
@@ -100,34 +100,34 @@ Authors: Shamal Faily
                       <b-col md="4">
                         <b-table striped bordered small hover :items="requirements" :fields=requirementTableFields>
                            <!-- eslint-disable-next-line -->
-                          <template v-slot:head(requirementsactions)="data"> 
-                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRequirement"/> 
+                          <template v-slot:head(requirementsactions)="data">
+                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRequirement"/>
                           </template>
                           <template v-slot:cell(requirementsactions)="row">
                             <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteRequirement(row.index)"/>
-                          </template> 
+                          </template>
                         </b-table>
                       </b-col>
                       <b-col md="4">
                         <b-table striped bordered small hover :items="targets" :fields=targetTableFields @row-clicked="viewTarget">
                            <!-- eslint-disable-next-line -->
-                          <template v-slot:head(targetsactions)="data"> 
-                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addTarget"/> 
-                          </template> 
+                          <template v-slot:head(targetsactions)="data">
+                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addTarget"/>
+                          </template>
                           <template v-slot:cell(targetsactions)="row">
                             <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteTarget(row.index)"/>
-                          </template> 
+                          </template>
                         </b-table>
                       </b-col>
                       <b-col md="4">
                         <b-table striped bordered small hover :items="notNone" :fields=propTableFields @row-clicked="viewProperty">
                           <!-- eslint-disable-next-line -->
-                          <template v-slot:head(propactions)="data"> 
-                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addProperty"/> 
-                          </template> 
+                          <template v-slot:head(propactions)="data">
+                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addProperty"/>
+                          </template>
                           <template v-slot:cell(propactions)="row">
                             <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="clearProperty(row.item)"/>
-                          </template> 
+                          </template>
                         </b-table>
                       </b-col>
                     </b-row>
@@ -138,8 +138,8 @@ Authors: Shamal Faily
                     <b-row>
                       <b-col md="3">
                         <b-table striped small bordered :fields="roleTableFields" :items="roles">
-                          <template v-slot:head(roleactions)="data"> 
-                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRole(data)"/> 
+                          <template v-slot:head(roleactions)="data">
+                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRole(data)"/>
                           </template>
                           <template v-slot:cell(roleactions)="row">
                             <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteRole(row.item)"/>
@@ -164,7 +164,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -258,25 +258,25 @@ export default {
       ],
       selectedParticipant : {
         participant : {
-          theTask : '', 
-          thePersona : '', 
-          theDuration : '', 
-          theFrequency : '', 
-          theDemands : '', 
-          theGoalConflict : '' 
+          theTask : '',
+          thePersona : '',
+          theDuration : '',
+          theFrequency : '',
+          theDemands : '',
+          theGoalConflict : ''
          }
       },
       selectedTarget : {
         environment : '',
         update : false,
         target : {
-          theName : '', 
-          theEffectiveness : 'None', 
+          theName : '',
+          theEffectiveness : 'None',
           theRationale : ''
          }
       }
     }
-  }, 
+  },
   methods: {
     checkForm() {
       this.errors = []
@@ -332,13 +332,13 @@ export default {
     viewParticipant(data,index) {
       this.selectedParticipant['index'] = index
       this.selectedParticipant['participant'] = JSON.parse(JSON.stringify(data));
-      this.$refs.participantDialog.show();  
+      this.$refs.participantDialog.show();
     },
     updateParticipant : function(updPart) {
       this.$set(this.objt.theEnvironmentProperties[this.envPropIndex].thePersonas,updPart.index,updPart.participant);
     },
     addRequirement() {
-      this.$refs.reqDialog.show();  
+      this.$refs.reqDialog.show();
     },
     addCountermeasureRequirement(data) {
       this.objt.theEnvironmentProperties[this.envPropIndex].theRequirements.push(data);
@@ -351,7 +351,7 @@ export default {
         this.selectedTarget['environment'] = this.objt.theEnvironmentProperties[this.envPropIndex].theEnvironmentName
         this.selectedTarget['target'] = {theName : '', theEffectiveness : 'None', theRationale : ''};
         this.selectedTarget['update'] = false;
-        this.$refs.targetDialog.show();  
+        this.$refs.targetDialog.show();
       }
       else {
         alert("No requirements set");
@@ -362,7 +362,7 @@ export default {
       this.selectedTarget['environment'] = this.objt.theEnvironmentProperties[this.envPropIndex].theEnvironmentName
       this.selectedTarget['target'] = JSON.parse(JSON.stringify(data));
       this.selectedTarget['update'] = true;
-      this.$refs.targetDialog.show();  
+      this.$refs.targetDialog.show();
     },
     updateTarget : function(updTarget) {
       if (updTarget.update) {
@@ -376,7 +376,7 @@ export default {
       this.objt.theEnvironmentProperties[this.envPropIndex].theTargets.splice(index,1);
     },
     addRole() {
-      this.$refs.roleDialog.show();  
+      this.$refs.roleDialog.show();
     },
     addObjectRole(data) {
       this.objt.theEnvironmentProperties[this.envPropIndex].theRoles.push(data);

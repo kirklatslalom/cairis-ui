@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-modal ref="directoryDialog" title="Add directory entry"  @ok="onOk">
@@ -42,9 +42,9 @@ Authors: Shamal Faily
         objt : undefined,
         items : [],
         directoryFields : [
-          {key: 'theLabel', label: 'Label', sortable: true}, 
+          {key: 'theLabel', label: 'Label', sortable: true},
           {key: 'theName', label: 'Name', sortable: true},
-          {key: 'theType', label: 'Type', sortable: true} 
+          {key: 'theType', label: 'Type', sortable: true}
         ]
       }
     },

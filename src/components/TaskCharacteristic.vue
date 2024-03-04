@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,11 +17,11 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="taskcharacteristic">
-    <characteristic-reference-modal ref="crDialog" :characteristicReference="this.selectedCharacteristicReference" :characteristic="this.objt.theName" characteristic_type="task" v-on:characteristic-reference-modal-update="updateCharacteristicReference"/> 
+    <characteristic-reference-modal ref="crDialog" :characteristicReference="this.selectedCharacteristicReference" :characteristic="this.objt.theName" characteristic_type="task" v-on:characteristic-reference-modal-update="updateCharacteristicReference"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -54,8 +54,8 @@ Authors: Shamal Faily
             <b-col md="4">
               <b-table striped bordered small :fields="groundTableFields" :items="objt.theGrounds" @row-clicked="viewGrounds">
                 <!-- eslint-disable-next-line -->
-                <template v-slot:head(gwractions)="data"> 
-                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addGrounds"/> 
+                <template v-slot:head(gwractions)="data">
+                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addGrounds"/>
                 </template>
                 <template v-slot:cell(gwractions)="row">
                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteGrounds(row.index)"/>
@@ -65,8 +65,8 @@ Authors: Shamal Faily
             <b-col md="4">
               <b-table striped bordered small :fields="warrantTableFields" :items="objt.theWarrant" @row-clicked="viewWarrant">
                 <!-- eslint-disable-next-line -->
-                <template v-slot:head(gwractions)="data"> 
-                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addWarrant"/> 
+                <template v-slot:head(gwractions)="data">
+                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addWarrant"/>
                 </template>
                 <template v-slot:cell(gwractions)="row">
                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteWarrant(row.index)"/>
@@ -76,8 +76,8 @@ Authors: Shamal Faily
             <b-col md="4">
               <b-table striped bordered small :fields="rebuttalTableFields" :items="objt.theRebuttal" @row-clicked="viewRebuttal">
                 <!-- eslint-disable-next-line -->
-                <template v-slot:head(gwractions)="data"> 
-                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRebuttal"/> 
+                <template v-slot:head(gwractions)="data">
+                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRebuttal"/>
                 </template>
                 <template v-slot:cell(gwractions)="row">
                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteRebuttal(row.index)"/>
@@ -94,7 +94,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -160,7 +160,7 @@ export default {
         }
       }
     }
-  }, 
+  },
   methods: {
     checkForm() {
       this.errors = []
@@ -207,13 +207,13 @@ export default {
       this.selectedCharacteristicReference.characteristicReference.theCharacteristicType = 'grounds';
       this.selectedCharacteristicReference.characteristicReference.theReferenceSynopsis.theActor = this.objt.theTaskName;
       this.selectedCharacteristicReference['update'] = false;
-      this.$refs.crDialog.show();  
+      this.$refs.crDialog.show();
     },
     viewGrounds(data,index) {
       this.selectedCharacteristicReference['index'] = index
       this.selectedCharacteristicReference['characteristicReference'] = JSON.parse(JSON.stringify(data));
       this.selectedCharacteristicReference['update'] = true;
-      this.$refs.crDialog.show();  
+      this.$refs.crDialog.show();
     },
     deleteGrounds(index) {
       this.objt.theGrounds.splice(index,1);
@@ -223,13 +223,13 @@ export default {
       this.selectedCharacteristicReference.characteristicReference.theCharacteristicType = 'warrant';
       this.selectedCharacteristicReference.characteristicReference.theReferenceSynopsis.theActor = this.objt.theTaskName;
       this.selectedCharacteristicReference['update'] = false;
-      this.$refs.crDialog.show();  
+      this.$refs.crDialog.show();
     },
     viewWarrant(data,index) {
       this.selectedCharacteristicReference['index'] = index
       this.selectedCharacteristicReference['characteristicReference'] = JSON.parse(JSON.stringify(data));
       this.selectedCharacteristicReference['update'] = true;
-      this.$refs.crDialog.show();  
+      this.$refs.crDialog.show();
     },
     deleteWarrant(index) {
       this.objt.theWarrant.splice(index,1);
@@ -239,13 +239,13 @@ export default {
       this.selectedCharacteristicReference.characteristicReference.theCharacteristicType = 'rebuttal';
       this.selectedCharacteristicReference.characteristicReference.theReferenceSynopsis.theActor = this.objt.theTaskName;
       this.selectedCharacteristicReference['update'] = false;
-      this.$refs.crDialog.show();  
+      this.$refs.crDialog.show();
     },
     viewRebuttal(data,index) {
       this.selectedCharacteristicReference['index'] = index
       this.selectedCharacteristicReference['characteristicReference'] = JSON.parse(JSON.stringify(data));
       this.selectedCharacteristicReference['update'] = true;
-      this.$refs.crDialog.show();  
+      this.$refs.crDialog.show();
     },
     deleteRebuttal(index) {
       this.objt.theRebuttal.splice(index,1);

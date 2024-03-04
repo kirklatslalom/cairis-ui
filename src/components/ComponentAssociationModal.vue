@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-modal ref="associationDialog" :title="this.dialogTitle"  @ok="onOk">
@@ -26,7 +26,7 @@ Authors: Shamal Faily
       <ul>
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
-    </p> 
+    </p>
     <b-card>
       <b-container fluid>
         <b-row>
@@ -101,7 +101,7 @@ Authors: Shamal Faily
         </b-row>
       </b-container>
     </b-card>
-  </b-modal> 
+  </b-modal>
 </template>
 
 <script>
@@ -123,7 +123,7 @@ import DimensionSelect from '@/components/DimensionSelect.vue'
         errors : [],
         navValues : ['0','1'],
         typeValues : ['Inheritance','Association','Aggregation','Composition','Dependency'],
-        nryValues : ['1','*','1..*']        
+        nryValues : ['1','*','1..*']
       }
     },
     components : {

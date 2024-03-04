@@ -15,7 +15,7 @@
     specific language governing permissions and limitations
     under the License.
 
-    Authors: Shamal Faily 
+    Authors: Shamal Faily
     Based on Lars Kotthoff's 'Chernoff faces for D3' Block: http://bl.ocks.org/larskotthoff/2011590
 */
 
@@ -33,7 +33,7 @@ function sign(num) {
 
 function scale(v,f) {
   return parseFloat((f/60) * v);
-} 
+}
 
 function d3_chernoff() {
   var mouthf = 0; // -1 - 1
@@ -89,7 +89,7 @@ function d3_chernoff() {
        .attr("class", "mouth")
        .attr("fill","none")
        .attr("stroke","black")
-       .attr("d", line); 
+       .attr("d", line);
 
     var nose = [{x: parseFloat(xCoord + scale(nosewvar,fRad)), y: parseFloat(yCoord - scale(10 - nosehvar,fRad))},
                 {x: parseFloat(xCoord), y: parseFloat(yCoord - scale(10 + nosehvar,fRad))},
@@ -110,7 +110,7 @@ function d3_chernoff() {
        .attr("class", "leye")
        .attr("fill","none")
        .attr("stroke","black")
-       .attr("d", bline); 
+       .attr("d", bline);
     ele.selectAll("path.reye").data([reye]).enter()
        .append("svg:path")
        .attr("class", "reye")
@@ -133,7 +133,7 @@ function d3_chernoff() {
        .attr("d", "M" + (parseFloat(xCoord + scale(15 - eyewvar/1.7+ sign(browvar),fRad))) + "," +
                         (parseFloat(yCoord - scale(60 - eyehvar + browvar,fRad))) + " " +
                         (parseFloat(xCoord + scale(15 + eyewvar/1.7 + sign(browvar),fRad))) + "," +
-                        (parseFloat(yCoord - scale(60 - eyehvar - browvar,fRad)))); 
+                        (parseFloat(yCoord - scale(60 - eyehvar - browvar,fRad))));
   }
 
   chernoff.xloc = function(x) {

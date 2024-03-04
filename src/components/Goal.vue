@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,14 +17,14 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
   <div class="attacker">
-    <dimension-modal v-if="objt.theEnvironmentProperties" ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addGoalEnvironmentProperty"/> 
-    <dimension-modal v-if="objt.theEnvironmentProperties.length" ref="assetDialog" dimension="asset" :environment="environmentName" :existing="concernNames" v-on:dimension-modal-update="addGoalConcern"/> 
-    <kaos-refinement-modal v-if="selectedAssociation.environment != ''" ref="goalRefinementDialog" :goalAssociation="selectedAssociation" :source="objt.theName" refinementType="Goal" v-on:kaos-refinement-update="updateGoalRefinement"/> 
-    <kaos-refinement-modal v-if="selectedAssociation.environment != ''" ref="subGoalRefinementDialog" :goalAssociation="selectedAssociation" :source="objt.theName" refinementType="Sub-Goal" v-on:kaos-refinement-update="updateSubGoalRefinement"/> 
-    <concern-association-modal v-if="objt.theEnvironmentProperties.length" ref="concernAssociationDialog" :concernAssociation="selectedConcernAssociation" :concerns="concernNames" v-on:concern-association-update="updateConcernAssociation"/> 
+    <dimension-modal v-if="objt.theEnvironmentProperties" ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addGoalEnvironmentProperty"/>
+    <dimension-modal v-if="objt.theEnvironmentProperties.length" ref="assetDialog" dimension="asset" :environment="environmentName" :existing="concernNames" v-on:dimension-modal-update="addGoalConcern"/>
+    <kaos-refinement-modal v-if="selectedAssociation.environment != ''" ref="goalRefinementDialog" :goalAssociation="selectedAssociation" :source="objt.theName" refinementType="Goal" v-on:kaos-refinement-update="updateGoalRefinement"/>
+    <kaos-refinement-modal v-if="selectedAssociation.environment != ''" ref="subGoalRefinementDialog" :goalAssociation="selectedAssociation" :source="objt.theName" refinementType="Sub-Goal" v-on:kaos-refinement-update="updateSubGoalRefinement"/>
+    <concern-association-modal v-if="objt.theEnvironmentProperties.length" ref="concernAssociationDialog" :concernAssociation="selectedConcernAssociation" :concerns="concernNames" v-on:concern-association-update="updateConcernAssociation"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -32,7 +32,7 @@ Authors: Shamal Faily
       </ul>
     </p>
     <b-form>
-      <b-card bg-variant="light" no body> 
+      <b-card bg-variant="light" no body>
         <b-row>
           <b-col md="6">
             <b-form-group label="Goal" label-class="font-weight-bold text-md-left" label-for="theGoalInput">
@@ -54,14 +54,14 @@ Authors: Shamal Faily
       <b-card header="Environments" bg-variant="light" no-body class="text-left">
         <template slot="header">
           <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addEnvironment"/> Environment
-        </template> 
+        </template>
         <b-row>
           <b-col sm="12">
             <b-tabs pills v-model="envPropIndex">
               <b-tab v-for="envProp in objt.theEnvironmentProperties" :key="envProp.theEnvironmentName" :title=envProp.theName>
                 <template slot="title">
                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click="deleteEnvironment(envProp.theEnvironmentName)"/>  {{envProp.theEnvironmentName}}
-                </template> 
+                </template>
               </b-tab>
             </b-tabs>
           </b-col>
@@ -115,12 +115,12 @@ Authors: Shamal Faily
                       <b-col md="12">
                         <b-table striped bordered small hover :items="goalRefinements" :fields=goalRefinementTableFields @row-clicked="viewGoalRefinement">
                           <!-- eslint-disable-next-line -->
-                          <template v-slot:head(goalrefinementactions)="data"> 
-                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addGoalRefinement"/> 
-                          </template> 
+                          <template v-slot:head(goalrefinementactions)="data">
+                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addGoalRefinement"/>
+                          </template>
                           <template v-slot:cell(goalrefinementactions)="row">
                             <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteGoalRefinement(row.index)"/>
-                          </template> 
+                          </template>
                         </b-table>
                       </b-col>
                     </b-row>
@@ -132,12 +132,12 @@ Authors: Shamal Faily
                       <b-col md="12">
                         <b-table striped bordered small hover :items="subGoalRefinements" :fields=subGoalRefinementTableFields @row-clicked="viewSubGoalRefinement">
                           <!-- eslint-disable-next-line -->
-                          <template v-slot:head(subgoalrefinementactions)="data"> 
-                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addSubGoalRefinement"/> 
-                          </template> 
+                          <template v-slot:head(subgoalrefinementactions)="data">
+                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addSubGoalRefinement"/>
+                          </template>
                           <template v-slot:cell(subgoalrefinementactions)="row">
                             <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteSubGoalRefinement(row.index)"/>
-                          </template> 
+                          </template>
                         </b-table>
                       </b-col>
                     </b-row>
@@ -149,23 +149,23 @@ Authors: Shamal Faily
                       <b-col md="4">
                         <b-table striped bordered small hover :items="concerns" :fields=concernTableFields>
                           <!-- eslint-disable-next-line -->
-                          <template v-slot:head(concernactions)="data"> 
-                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addConcern"/> 
-                          </template> 
+                          <template v-slot:head(concernactions)="data">
+                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addConcern"/>
+                          </template>
                           <template v-slot:cell(concernactions)="row">
                             <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteConcern(row.index)"/>
-                          </template> 
+                          </template>
                         </b-table>
                       </b-col>
                       <b-col md="8">
                         <b-table striped bordered small hover :items="concernAssociations" :fields=concernAssociationTableFields @row-clicked="viewConcernAssociation">
                           <!-- eslint-disable-next-line -->
-                          <template v-slot:head(concernassociationactions)="data"> 
-                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addConcernAssociation"/> 
-                          </template> 
+                          <template v-slot:head(concernassociationactions)="data">
+                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addConcernAssociation"/>
+                          </template>
                           <template v-slot:cell(concernassociationactions)="row">
                             <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteConcernAssociation(row.index)"/>
-                          </template> 
+                          </template>
                         </b-table>
                       </b-col>
                     </b-row>
@@ -183,7 +183,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -261,10 +261,10 @@ export default {
       }
     },
     goalRefinements() {
-      return this.objt.theEnvironmentProperties.length > 0 ? this.objt.theEnvironmentProperties[this.envPropIndex].theGoalRefinements : [] 
+      return this.objt.theEnvironmentProperties.length > 0 ? this.objt.theEnvironmentProperties[this.envPropIndex].theGoalRefinements : []
     },
     subGoalRefinements() {
-      return this.objt.theEnvironmentProperties.length > 0 ? this.objt.theEnvironmentProperties[this.envPropIndex].theSubGoalRefinements : [] 
+      return this.objt.theEnvironmentProperties.length > 0 ? this.objt.theEnvironmentProperties[this.envPropIndex].theSubGoalRefinements : []
     },
   },
   data() {
@@ -294,10 +294,10 @@ export default {
         environment : '',
         update : false,
         association : {
-          theEndName : '', 
-          theEndType : 'goal', 
-          theRefType : 'and', 
-          isAlternate: 'No', 
+          theEndName : '',
+          theEndType : 'goal',
+          theRefType : 'and',
+          isAlternate: 'No',
           theRationale : ''
          }
       }
@@ -338,13 +338,13 @@ export default {
       this.selectedAssociation['association'] = JSON.parse(JSON.stringify(data));
       this.selectedAssociation['environment'] = this.objt.theEnvironmentProperties[this.envPropIndex].theEnvironmentName;
       this.selectedAssociation['update'] = true;
-      this.$refs.goalRefinementDialog.show();  
+      this.$refs.goalRefinementDialog.show();
     },
     addGoalRefinement() {
       this.selectedAssociation['association'] = {theEndName : '', theEndType : 'goal', theRefType : 'and', isAlternate: 'No', theRationale : ''};
       this.selectedAssociation['environment'] = this.objt.theEnvironmentProperties[this.envPropIndex].theEnvironmentName;
       this.selectedAssociation['update'] = false;
-      this.$refs.goalRefinementDialog.show();  
+      this.$refs.goalRefinementDialog.show();
     },
     deleteGoalRefinement(index) {
       this.objt.theEnvironmentProperties[this.envPropIndex].theGoalRefinements.splice(index,1);
@@ -354,13 +354,13 @@ export default {
       this.selectedAssociation['association'] = JSON.parse(JSON.stringify(data));
       this.selectedAssociation['environment'] = this.objt.theEnvironmentProperties[this.envPropIndex].theEnvironmentName;
       this.selectedAssociation['update'] = true;
-      this.$refs.subGoalRefinementDialog.show();  
+      this.$refs.subGoalRefinementDialog.show();
     },
     addSubGoalRefinement() {
       this.selectedAssociation['association'] = {theEndName : '', theEndType : 'goal', theRefType : 'and', isAlternate: 'No', theRationale : ''};
       this.selectedAssociation['environment'] = this.objt.theEnvironmentProperties[this.envPropIndex].theEnvironmentName;
       this.selectedAssociation['update'] = false;
-      this.$refs.subGoalRefinementDialog.show();  
+      this.$refs.subGoalRefinementDialog.show();
     },
     updateGoalRefinement : function(updAssoc) {
       if (updAssoc.update) {

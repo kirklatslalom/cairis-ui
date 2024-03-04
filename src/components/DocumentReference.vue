@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
   <div class="documentreference">
     <p v-if="errors.length">
@@ -28,7 +28,7 @@ Authors: Shamal Faily
     </p>
     <b-form>
       <b-container fluid>
-      <b-card bg-variant="light" no body> 
+      <b-card bg-variant="light" no body>
         <b-row>
           <b-col md=12>
             <b-container fluid>
@@ -47,7 +47,7 @@ Authors: Shamal Faily
             </b-container>
           </b-col>
         </b-row>
-      </b-card> 
+      </b-card>
       </b-container>
       <b-container fluid>
         <b-form-row>
@@ -56,7 +56,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>

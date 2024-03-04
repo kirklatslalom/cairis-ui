@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,13 +17,13 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="task">
-    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addTaskEnvironmentProperty"/> 
-    <dimension-modal v-if="objt.theEnvironmentProperties.length" ref="assetDialog" dimension="asset" :environment="environmentName" :existing="concernNames" v-on:dimension-modal-update="addTaskConcern"/> 
-    <concern-association-modal v-if="objt.theEnvironmentProperties.length" ref="concernAssociationDialog" :concernAssociation="selectedConcernAssociation" :concerns="concernNames" v-on:concern-association-update="updateConcernAssociation"/> 
+    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addTaskEnvironmentProperty"/>
+    <dimension-modal v-if="objt.theEnvironmentProperties.length" ref="assetDialog" dimension="asset" :environment="environmentName" :existing="concernNames" v-on:dimension-modal-update="addTaskConcern"/>
+    <concern-association-modal v-if="objt.theEnvironmentProperties.length" ref="concernAssociationDialog" :concernAssociation="selectedConcernAssociation" :concerns="concernNames" v-on:concern-association-update="updateConcernAssociation"/>
     <participant-modal v-if="objt.theEnvironmentProperties.length" ref="participantDialog" :taskParticipant="selectedParticipant" :taskParticipants="participantNames" v-on:participant-update="updateParticipant"/>
     <task-contribution-modal v-if="objt.theEnvironmentProperties.length" ref="tcDialog" :taskContribution="selectedContribution" :taskContributions="contributionNames" v-on:task-contribution-update="updateContribution"/>
     <p v-if="errors.length">
@@ -73,17 +73,17 @@ Authors: Shamal Faily
         <b-card header="Environments" class="text-left">
           <template slot="header">
             <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addEnvironment"/> Environment
-          </template> 
+          </template>
           <b-row>
             <b-col sm="12">
               <b-tabs pills v-model="envPropIndex">
                 <b-tab v-for="envProp in this.objt.theEnvironmentProperties" :key="envProp.theEnvironmentName" :title=envProp.theName>
                   <template slot="title">
                     <font-awesome-icon icon="minus" :style="{color: 'red'}" @click="deleteEnvironment(envProp.theEnvironmentName)"/>  {{envProp.theEnvironmentName}}
-                  </template> 
-                </b-tab> 
+                  </template>
+                </b-tab>
                </b-tabs>
-             </b-col> 
+             </b-col>
           </b-row>
           <b-row v-if="this.objt.theEnvironmentProperties.length">
             <b-col sm="12">
@@ -97,12 +97,12 @@ Authors: Shamal Faily
                       <b-col md="12">
                         <b-table striped bordered small hover :items="participants" :fields=participantTableFields @row-clicked="viewParticipant">
                            <!-- eslint-disable-next-line -->
-                          <template v-slot:head(participantsactions)="data"> 
-                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addParticipant"/> 
-                          </template> 
+                          <template v-slot:head(participantsactions)="data">
+                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addParticipant"/>
+                          </template>
                           <template v-slot:cell(participantsactions)="row">
                             <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteParticipant(row.index)"/>
-                          </template> 
+                          </template>
                         </b-table>
                       </b-col>
                     </b-row>
@@ -125,34 +125,34 @@ Authors: Shamal Faily
                         <b-col md="4">
                           <b-table striped bordered small hover :items="concerns" :fields=concernTableFields>
                             <!-- eslint-disable-next-line -->
-                            <template v-slot:head(concernactions)="data"> 
-                              <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addConcern"/> 
-                            </template> 
+                            <template v-slot:head(concernactions)="data">
+                              <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addConcern"/>
+                            </template>
                             <template v-slot:cell(concernactions)="row">
                               <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteConcern(row.index)"/>
-                            </template> 
+                            </template>
                           </b-table>
                         </b-col>
                         <b-col md="4">
                           <b-table striped bordered small hover :items="concernAssociations" :fields=concernAssociationTableFields @row-clicked="viewConcernAssociation">
                             <!-- eslint-disable-next-line -->
-                            <template v-slot:head(concernassociationactions)="data"> 
-                              <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addConcernAssociation"/> 
-                            </template> 
+                            <template v-slot:head(concernassociationactions)="data">
+                              <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addConcernAssociation"/>
+                            </template>
                             <template v-slot:cell(concernassociationactions)="row">
                               <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteConcernAssociation(row.index)"/>
-                            </template> 
+                            </template>
                           </b-table>
                         </b-col>
                         <b-col md="4">
                           <b-table striped bordered small hover :items="contributions" :fields=contributionTableFields @row-clicked="viewContribution">
                             <!-- eslint-disable-next-line -->
-                            <template v-slot:head(contributionactions)="data"> 
-                              <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addContribution"/> 
-                            </template> 
+                            <template v-slot:head(contributionactions)="data">
+                              <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addContribution"/>
+                            </template>
                             <template v-slot:cell(contributionactions)="row">
                               <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteContribution(row.index)"/>
-                            </template> 
+                            </template>
                           </b-table>
                         </b-col>
                       </b-row>
@@ -170,7 +170,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -262,11 +262,11 @@ export default {
         environment : '',
         update : false,
         participant : {
-          thePersona : '', 
-          theDuration : '', 
-          theFrequency : '', 
-          theDemands : '', 
-          theGoalConflict : '' 
+          thePersona : '',
+          theDuration : '',
+          theFrequency : '',
+          theDemands : '',
+          theGoalConflict : ''
          }
       },
       selectedContribution : {
@@ -279,7 +279,7 @@ export default {
         }
       }
     }
-  }, 
+  },
   methods: {
     addTaskConcern(data) {
       this.objt.theEnvironmentProperties[this.envPropIndex].theAssets.push(data);
@@ -366,7 +366,7 @@ export default {
       pObjt['theFrequency'] = this.reverseFrequencyLookup[pObjt['theFrequency']]
       this.selectedParticipant['participant'] = pObjt;
       this.selectedParticipant['update'] = true;
-      this.$refs.participantDialog.show();  
+      this.$refs.participantDialog.show();
     },
     viewContribution(data,index) {
       this.selectedContribution['index'] = index;
@@ -379,12 +379,12 @@ export default {
       this.selectedParticipant['environment'] = this.objt.theEnvironmentProperties[this.envPropIndex].theEnvironmentName;
       this.selectedParticipant['participant'] = {thePersona : '', theDuration : '', theFrequency : '', theDemands : '', theGoalConflict : ''};
       this.selectedParticipant['update'] = false;
-      this.$refs.participantDialog.show();  
+      this.$refs.participantDialog.show();
     },
     addContribution() {
       this.selectedContribution['contribution'] = {theSource : this.objt.theName, theDestination : '',theEnvironment : this.environmentName, theContribution : 'Help'};
       this.selectedContribution['update'] = false;
-      this.$refs.tcDialog.show();  
+      this.$refs.tcDialog.show();
     },
     updateParticipant : function(updPart) {
       if (updPart.update) {

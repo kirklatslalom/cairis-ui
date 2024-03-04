@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-modal ref="crModal" :title="this.dialogTitle"  @ok="onOk">
@@ -26,8 +26,8 @@ Authors: Shamal Faily
       <ul>
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
-    </p> 
-    <b-card no-body v-if="reference != undefined"> 
+    </p>
+    <b-card no-body v-if="reference != undefined">
       <b-tabs card>
         <b-tab title="Reference" active>
           <b-card bg-variant="light">
@@ -111,7 +111,7 @@ Authors: Shamal Faily
         </b-tab>
       </b-tabs>
     </b-card>
-  </b-modal> 
+  </b-modal>
 </template>
 
 <script>

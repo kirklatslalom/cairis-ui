@@ -1,7 +1,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'; 
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {mount, createLocalVue} from '@vue/test-utils';
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -32,7 +32,7 @@ config.mocks['$store'] = {
 }
 describe('Requirement.vue', () => {
   it('Render requirement', () => {
-    const testReq = testData['requirement']; 
+    const testReq = testData['requirement'];
     const wrapper = mount(Requirement,{localVue, propsData : {object: testReq, label: 'Update', domain: {domain: 'asset', domainName: 'Clinical Data'}}});
     expect(wrapper.find('#theNameInput').element.value).to.equal('Anonymisation guidelines');
     expect(wrapper.find('#theTypeInput').element.value).to.equal('Functional');
@@ -40,5 +40,5 @@ describe('Requirement.vue', () => {
     expect(wrapper.find('#theFitCriterionInput').element.value).to.equal('None');
     expect(wrapper.find('#theRationaleInput').element.value).to.equal('None');
     expect(wrapper.find('#theOriginatorInput').element.value).to.equal('Interview data');
-  }); 
+  });
 })

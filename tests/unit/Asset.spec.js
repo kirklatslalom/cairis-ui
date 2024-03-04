@@ -1,7 +1,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'; 
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {mount, createLocalVue} from '@vue/test-utils';
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -31,17 +31,17 @@ config.mocks['$store'] = {
 describe('Asset.vue', () => {
 
   it('Render asset', () => {
-    const testAsset = testData['asset']; 
+    const testAsset = testData['asset'];
     const wrapper = mount(Asset,{localVue, propsData : {object: testAsset, label: 'Update'}});
     expect(wrapper.find('#theAssetInput').element.value).to.equal('Clinical Data');
     expect(wrapper.find('#theShortCodeInput').element.value).to.equal('CD');
     expect(wrapper.find('#theTypeInput').element.value).to.equal('');
     expect(wrapper.find('#theDescription').element.value).to.equal('Clinical Data');
     expect(wrapper.find('#theSignificance').element.value).to.equal('Unanonymised and in the wrong hands, this could be very damaging.');
-  }); 
+  });
 
   it("Add asset environment property", () => {
-    const testAsset = testData['asset']; 
+    const testAsset = testData['asset'];
     let wrapper = mount(Asset,{localVue, propsData : {object: testAsset, label: 'Update'}});
     expect(wrapper.vm.objt.theEnvironmentProperties.length).to.equal(2);
     wrapper.vm.addAssetEnvironmentProperty("Default");
@@ -50,7 +50,7 @@ describe('Asset.vue', () => {
   });
 
   it("Delete asset environment property", () => {
-    const testAsset = testData['asset']; 
+    const testAsset = testData['asset'];
     let wrapper = mount(Asset,{localVue, propsData : {object: testAsset, label: 'Update'}});
     expect(wrapper.vm.objt.theEnvironmentProperties.length).to.equal(3);
     wrapper.vm.deleteEnvironment("Default");

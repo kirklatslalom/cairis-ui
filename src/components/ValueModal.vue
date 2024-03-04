@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-modal ref="valueModal" :title="this.dialogTitle"  @ok="onOk">
@@ -26,13 +26,13 @@ Authors: Shamal Faily
       <ul>
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
-    </p> 
+    </p>
     <b-card>
       <b-form-group label="Value" label-class="font-weight-bold text-md-left" label-for="theValueInput">
         <b-form-textarea id="theValueInput" v-model="objt" type="text" :rows=2 :max-rows=4 required />
       </b-form-group>
-    </b-card> 
-  </b-modal> 
+    </b-card>
+  </b-modal>
 </template>
 
 <script>
@@ -84,7 +84,7 @@ Authors: Shamal Faily
         else {
           this.$emit('value-update',{value : this.objt,update : this.value.update,index: this.value.update ? this.value.index : -1});
           this.$refs.valueModal.hide();
-        } 
+        }
       }
     }
   }

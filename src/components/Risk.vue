@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="risk">
@@ -64,7 +64,7 @@ Authors: Shamal Faily
               <b-tabs pills v-model="envPropIndex" >
                 <b-tab v-for="envProp in misuseCaseEnvironments" :key="envProp.theEnvironmentName" :title="envProp.theEnvironmentName" />
               </b-tabs>
-            </b-col> 
+            </b-col>
           </b-row>
           <b-row v-if="this.objt.theMisuseCase.theEnvironmentProperties.length">
             <b-col md="12">
@@ -128,7 +128,7 @@ Authors: Shamal Faily
                 </b-tab>
               </b-tabs>
             </b-col>
-          </b-row> 
+          </b-row>
         </b-card>
       </b-container>
       <b-container fluid>
@@ -138,7 +138,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>

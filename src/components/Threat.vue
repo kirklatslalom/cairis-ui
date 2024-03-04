@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,14 +17,14 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="threat">
-    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addThreatEnvironmentProperty"/> 
-    <dimension-modal ref="assetDialog" dimension="asset" :environment="environmentName" :existing="assetNames" v-on:dimension-modal-update="addThreatAsset"/> 
-    <dimension-modal ref="attackerDialog" dimension="attacker" :environment="environmentName" :existing="attackerNames" v-on:dimension-modal-update="addThreatAttacker"/> 
-    <property-modal ref="propertyDialog" :securityProperty="selectedProperty" v-on:property-update="updateProperty"/> 
+    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addThreatEnvironmentProperty"/>
+    <dimension-modal ref="assetDialog" dimension="asset" :environment="environmentName" :existing="assetNames" v-on:dimension-modal-update="addThreatAsset"/>
+    <dimension-modal ref="attackerDialog" dimension="attacker" :environment="environmentName" :existing="attackerNames" v-on:dimension-modal-update="addThreatAttacker"/>
+    <property-modal ref="propertyDialog" :securityProperty="selectedProperty" v-on:property-update="updateProperty"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -59,17 +59,17 @@ Authors: Shamal Faily
         <b-card header="Environments" class="text-left">
           <template slot="header">
             <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addEnvironment"/> Environment
-          </template> 
+          </template>
           <b-row>
             <b-col sm="12">
               <b-tabs pills v-model="envPropIndex">
                 <b-tab v-for="envProp in this.objt.theEnvironmentProperties" :key="envProp.theEnvironmentName" :title=envProp.theName>
                   <template slot="title">
                     <font-awesome-icon icon="minus" :style="{color: 'red'}" @click="deleteEnvironment(envProp.theEnvironmentName)"/>  {{envProp.theEnvironmentName}}
-                  </template> 
-                </b-tab> 
+                  </template>
+                </b-tab>
                </b-tabs>
-             </b-col> 
+             </b-col>
           </b-row>
           <b-row v-if="this.objt.theEnvironmentProperties.length">
             <b-col sm="12">
@@ -82,8 +82,8 @@ Authors: Shamal Faily
             <b-col sm="4">
               <b-table striped bordered small :fields="attackerTableFields" :items="environmentAttackers">
                 <!-- eslint-disable-next-line -->
-                <template v-slot:head(attackeractions)="data"> 
-                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addAttacker"/> 
+                <template v-slot:head(attackeractions)="data">
+                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addAttacker"/>
                 </template>
                 <template v-slot:cell(attackeractions)="row">
                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteAttacker(row.index)"/>
@@ -93,8 +93,8 @@ Authors: Shamal Faily
             <b-col sm="4">
               <b-table striped bordered small :fields="assetTableFields" :items="environmentAssets">
                 <!-- eslint-disable-next-line -->
-                <template v-slot:head(assetactions)="data"> 
-                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addAsset"/> 
+                <template v-slot:head(assetactions)="data">
+                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addAsset"/>
                 </template>
                 <template v-slot:cell(assetactions)="row">
                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteAsset(row.index)"/>
@@ -104,15 +104,15 @@ Authors: Shamal Faily
             <b-col sm="4">
               <b-table striped bordered small hover :items="notNone" :fields=propTableFields @row-clicked="viewProperty">
                 <!-- eslint-disable-next-line -->
-                <template v-slot:head(propactions)="data"> 
-                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addProperty"/> 
-                </template> 
+                <template v-slot:head(propactions)="data">
+                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addProperty"/>
+                </template>
                 <template v-slot:cell(propactions)="row">
                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="clearProperty(row.item)"/>
-                </template> 
+                </template>
               </b-table>
             </b-col>
-          </b-row> 
+          </b-row>
         </b-card>
       </b-container>
       <b-container fluid>
@@ -122,7 +122,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -198,7 +198,7 @@ export default {
         {key: 'name', label : 'Attacker'}
       ],
     }
-  }, 
+  },
   methods: {
     checkForm() {
       this.errors = []
@@ -263,15 +263,15 @@ export default {
     },
     addEnvironment(evt) {
       evt.preventDefault();
-      this.$refs.environmentDialog.show();  
+      this.$refs.environmentDialog.show();
     },
     addAsset(evt) {
       evt.preventDefault();
-      this.$refs.assetDialog.show();  
+      this.$refs.assetDialog.show();
     },
     addAttacker(evt) {
       evt.preventDefault();
-      this.$refs.attackerDialog.show();  
+      this.$refs.attackerDialog.show();
     },
     addThreatEnvironmentProperty : function(envName) {
       this.addEnvironmentProperty({

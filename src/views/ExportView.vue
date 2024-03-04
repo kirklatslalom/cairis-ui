@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,13 +17,13 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="exportview">
     <b-form class="vld-parent">
       <loading :active.sync="isLoading" is-full-page></loading>
-      <b-breadcrumb :items="bcItems" /> 
+      <b-breadcrumb :items="bcItems" />
       <b-container fluid>
         <p v-if="errors.length">
           <b>Please correct the following error(s):</b>
@@ -76,7 +76,7 @@ Authors: Shamal Faily
           </b-form-group>
 
         </b-card>
-      </b-container> 
+      </b-container>
       <b-container fluid>
         <b-form-row>
           <b-col md="4" offset-md="5" >
@@ -84,7 +84,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
 
   </div>
@@ -106,10 +106,10 @@ export default {
     },
     exportURL() {
       return this.theModelType == 'Model' || this.theModelType == 'ModelXML' ? '/api/export/file' :
-        (this.theModelType == 'Architectural Pattern' ? '/api/export/file/architectural_pattern/' + this.theParameterName : 
-          (this.theModelType == 'Security Patterns' ? '/api/export/file/security_patterns' : 
-            (this.theModelType == 'User goals (Workbook)' ? '/api/export/file/user_goals' : 
-              (this.theModelType == 'Persona characteristics (Workbook)' ? '/api/export/file/persona_characteristics' : 
+        (this.theModelType == 'Architectural Pattern' ? '/api/export/file/architectural_pattern/' + this.theParameterName :
+          (this.theModelType == 'Security Patterns' ? '/api/export/file/security_patterns' :
+            (this.theModelType == 'User goals (Workbook)' ? '/api/export/file/user_goals' :
+              (this.theModelType == 'Persona characteristics (Workbook)' ? '/api/export/file/persona_characteristics' :
                 ('/api/export/file/grl/task/' + this.theTaskName + '/persona/' + this.persona + '/environment/' + this.theEnvironmentName)))));
     },
     persona() {

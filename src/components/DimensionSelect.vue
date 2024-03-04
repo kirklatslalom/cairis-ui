@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-form-select ref="dimensionSelect" id="dimensionSelect" :disabled="is_disabled" v-model="selected" :size="display_size" :options = "filteredItems" @change="onChange($event)" />
@@ -128,7 +128,7 @@ export default {
           ref.items = ref.items.length > 0 ? ref.items.filter((item) => {if (!ref.existing.includes(item)) return item; }) : []
           if (ref.items.length == 1 && !ref.includeall) {
             ref.$emit('dimension-select-change',ref.items[0]);
-          } 
+          }
           if (ref.includeall) {
             if (ref.dimension == 'persona_characteristic') {
               ref.items.unshift('All')

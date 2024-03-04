@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-modal ref="interfaceDialog" :title="this.dialogTitle"  @ok="onOk">
@@ -26,7 +26,7 @@ Authors: Shamal Faily
       <ul>
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
-    </p> 
+    </p>
     <b-card>
       <b-form-group label="Interface" label-class="text-sm-left" label-cols="3" label-for="theAssetInterfaceInput" >
         <b-form-input id="theAssetInterfaceInput" v-model="assetinterface.assetinterface.theInterfaceName" type="text" required />
@@ -41,7 +41,7 @@ Authors: Shamal Faily
         <dimension-select id="thePrivilege" dimension='privilege' :initial="this.assetinterface.assetinterface.thePrivilege" v-on:dimension-select-change="privilegeSelected" v-on:dimension-items-updated="privilegesLoaded" required />
       </b-form-group>
     </b-card>
-  </b-modal> 
+  </b-modal>
 </template>
 
 <script>

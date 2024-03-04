@@ -18,7 +18,7 @@
 
     Authors: Shamal Faily */
 
-const defaultObjectFactory = { 
+const defaultObjectFactory = {
 
 architecturalpattern : {
   theName : '',
@@ -69,7 +69,7 @@ domainproperty : {
   theType : '',
   theDescription : '',
   theOriginator : '',
-  theTags : '' 
+  theTags : ''
 },
 environment : {
   theName : '',
@@ -79,22 +79,22 @@ environment : {
   theDuplicateProperty : 'None',
   theOverridingEnvironment : '',
   theTensions : [
-    {"value": 0, "attr_id": 4, "base_attr_id": 0, "rationale": "None"}, 
-    {"value": 0, "attr_id": 5, "base_attr_id": 0, "rationale": "None"}, 
-    {"value": 0, "attr_id": 6, "base_attr_id": 0, "rationale": "None"}, 
-    {"value": 0, "attr_id": 7, "base_attr_id": 0, "rationale": "None"}, 
-    {"value": 0, "attr_id": 4, "base_attr_id": 1, "rationale": "None"}, 
-    {"value": 0, "attr_id": 5, "base_attr_id": 1, "rationale": "None"}, 
-    {"value": 0, "attr_id": 6, "base_attr_id": 1, "rationale": "None"}, 
-    {"value": 0, "attr_id": 7, "base_attr_id": 1, "rationale": "None"}, 
-    {"value": 0, "attr_id": 4, "base_attr_id": 2, "rationale": "None"}, 
-    {"value": 0, "attr_id": 5, "base_attr_id": 2, "rationale": "None"}, 
-    {"value": 0, "attr_id": 6, "base_attr_id": 2, "rationale": "None"}, 
-    {"value": 0, "attr_id": 7, "base_attr_id": 2, "rationale": "None"}, 
-    {"value": 0, "attr_id": 4, "base_attr_id": 3, "rationale": "None"}, 
+    {"value": 0, "attr_id": 4, "base_attr_id": 0, "rationale": "None"},
+    {"value": 0, "attr_id": 5, "base_attr_id": 0, "rationale": "None"},
+    {"value": 0, "attr_id": 6, "base_attr_id": 0, "rationale": "None"},
+    {"value": 0, "attr_id": 7, "base_attr_id": 0, "rationale": "None"},
+    {"value": 0, "attr_id": 4, "base_attr_id": 1, "rationale": "None"},
+    {"value": 0, "attr_id": 5, "base_attr_id": 1, "rationale": "None"},
+    {"value": 0, "attr_id": 6, "base_attr_id": 1, "rationale": "None"},
+    {"value": 0, "attr_id": 7, "base_attr_id": 1, "rationale": "None"},
+    {"value": 0, "attr_id": 4, "base_attr_id": 2, "rationale": "None"},
+    {"value": 0, "attr_id": 5, "base_attr_id": 2, "rationale": "None"},
+    {"value": 0, "attr_id": 6, "base_attr_id": 2, "rationale": "None"},
+    {"value": 0, "attr_id": 7, "base_attr_id": 2, "rationale": "None"},
+    {"value": 0, "attr_id": 4, "base_attr_id": 3, "rationale": "None"},
     {"value": 0, "attr_id": 5, "base_attr_id": 3, "rationale": "None"},
-    {"value": 0, "attr_id": 6, "base_attr_id": 3, "rationale": "None"}, 
-    {"value": 0, "attr_id": 7, "base_attr_id": 3, "rationale": "None"}] 
+    {"value": 0, "attr_id": 6, "base_attr_id": 3, "rationale": "None"},
+    {"value": 0, "attr_id": 7, "base_attr_id": 3, "rationale": "None"}]
 },
 externaldocument : {
   theName : '',

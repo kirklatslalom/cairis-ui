@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,13 +17,13 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="totrello">
     <b-form class="vld-parent">
       <loading :active.sync="isLoading" is-full-page></loading>
-      <b-breadcrumb :items="bcItems" /> 
+      <b-breadcrumb :items="bcItems" />
       <b-container fluid>
         <p v-if="errors.length">
           <b>Please correct the following error(s):</b>
@@ -36,7 +36,7 @@ Authors: Shamal Faily
             <b-form-input id="theBoardInput" v-model="theBoardName" type="text" required />
           </b-form-group>
         </b-card>
-      </b-container> 
+      </b-container>
       <b-container fluid>
         <b-form-row>
           <b-col md="4" offset-md="5" >
@@ -44,7 +44,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
 
   </div>
@@ -163,7 +163,7 @@ export default {
           .then(response => {
             let rlPost = RateLimit(that.postReference,100);
             response.data.forEach(function(dr) {
-              rlPost(dr,listId);            
+              rlPost(dr,listId);
             });
             that.isLoading = false;
             EventBus.$emit('operation-success','Document references exported');

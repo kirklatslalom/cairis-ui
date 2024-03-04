@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-modal ref="refinementDialog" :title="this.dialogTitle"  @ok="onOk">
@@ -26,7 +26,7 @@ Authors: Shamal Faily
       <ul>
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
-    </p> 
+    </p>
     <b-card>
       <b-row>
         <b-col md="6">
@@ -70,7 +70,7 @@ Authors: Shamal Faily
         </b-col>
       </b-row>
     </b-card>
-  </b-modal> 
+  </b-modal>
 </template>
 
 <script>
@@ -109,9 +109,9 @@ export default {
      );
     },
     refTypes() {
-      return  this.theTargetType == 'Sub-Goal' ? this.refTypeOptions['goal,' + this.association.association.theEndType] : 
+      return  this.theTargetType == 'Sub-Goal' ? this.refTypeOptions['goal,' + this.association.association.theEndType] :
         (this.theTargetType == 'Sub-Obstacle' ? this.refTypeOptions['obstacle,' + this.association.association.theEndType] :
-          (this.theTargetType == 'Goal' ? this.refTypeOptions[this.association.association.theEndType + ',goal'] : 
+          (this.theTargetType == 'Goal' ? this.refTypeOptions[this.association.association.theEndType + ',goal'] :
             this.theTargetType == 'Obstacle' ? this.refTypeOptions[this.association.association.theEndType + ',obstacle'] : []
           )
         );

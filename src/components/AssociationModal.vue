@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-modal ref="associationDialog" :title="this.dialogTitle"  @ok="onOk">
@@ -26,7 +26,7 @@ Authors: Shamal Faily
       <ul>
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
-    </p> 
+    </p>
     <b-card>
       <b-form-group label="Asset" label-class="font-weight-bold text-sm-left" label-cols="3" label-for="theHeadAssetInput" >
         <b-form-input readonly id="theHeadAssetInput" v-model="assetAssociation.asset"></b-form-input>
@@ -56,10 +56,10 @@ Authors: Shamal Faily
         <b-form-select id="theTailNavInput" v-model="association.association.theTailNav" :options="navValues" class="mb-3" required></b-form-select>
       </b-form-group>
       <b-form-group label="Tail" label-class="font-weight-bold text-sm-left" label-cols="3" label-for="theTailAssetInput" >
-        <dimension-select id="theTailAssetInput" dimension='asset' :environment=this.assetAssociation.environment :existing=this.assetAssociation.assets :initial="this.assetAssociation.initial" v-on:dimension-select-change="tailAssetSelected" v-on:dimension-items-updated="tailAssetsLoaded" /> 
+        <dimension-select id="theTailAssetInput" dimension='asset' :environment=this.assetAssociation.environment :existing=this.assetAssociation.assets :initial="this.assetAssociation.initial" v-on:dimension-select-change="tailAssetSelected" v-on:dimension-items-updated="tailAssetsLoaded" />
       </b-form-group>
     </b-card>
-  </b-modal> 
+  </b-modal>
 </template>
 
 <script>
@@ -77,7 +77,7 @@ import DimensionSelect from '@/components/DimensionSelect.vue'
         errors : [],
         navValues : ['0','1'],
         typeValues : ['Inheritance','Association','Aggregation','Composition','Dependency'],
-        nryValues : ['1','*','1..*']        
+        nryValues : ['1','*','1..*']
       }
     },
     components : {

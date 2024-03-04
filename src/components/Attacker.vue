@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,13 +17,13 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
   <div class="attacker">
-    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addAttackerEnvironmentProperty"/> 
-    <dimension-modal ref="roleDialog" dimension="role" :existing="environmentRoleNames" v-on:dimension-modal-update="addAttackerRole"/> 
-    <dimension-modal ref="motiveDialog" dimension="motivation" :existing="environmentMotives" v-on:dimension-modal-update="addAttackerMotive"/> 
-    <capability-modal ref="capabilityDialog" :existing="capabilityNames" v-on:capability-modal-update="addAttackerCapability"/> 
+    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addAttackerEnvironmentProperty"/>
+    <dimension-modal ref="roleDialog" dimension="role" :existing="environmentRoleNames" v-on:dimension-modal-update="addAttackerRole"/>
+    <dimension-modal ref="motiveDialog" dimension="motivation" :existing="environmentMotives" v-on:dimension-modal-update="addAttackerMotive"/>
+    <capability-modal ref="capabilityDialog" :existing="capabilityNames" v-on:capability-modal-update="addAttackerCapability"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -32,10 +32,10 @@ Authors: Shamal Faily
     </p>
     <b-form>
       <b-container fluid>
-      <b-card bg-variant="light" no body> 
+      <b-card bg-variant="light" no body>
         <b-row>
           <b-col md=2>
-            <b-img :src="attackerImage" rounded center fluid-grow @click="imageClicked" /> 
+            <b-img :src="attackerImage" rounded center fluid-grow @click="imageClicked" />
             <p><input type="file" ref="attackerimageupload" style="display: none" @change="imageSelected"></p>
           </b-col>
           <b-col md=10>
@@ -57,14 +57,14 @@ Authors: Shamal Faily
             <b-card header="Environments" no-body class="text-left">
               <template slot="header">
                 <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addEnvironment"/> Environment
-              </template> 
+              </template>
               <b-row>
                 <b-col sm="12">
                   <b-tabs pills v-model="envPropIndex">
                     <b-tab v-for="envProp in objt.theEnvironmentProperties" :key="envProp.theEnvironmentName" :title=envProp.theName>
                       <template slot="title">
                         <font-awesome-icon icon="minus" :style="{color: 'red'}" @click="deleteEnvironment(envProp.theEnvironmentName)"/>  {{envProp.theEnvironmentName}}
-                      </template> 
+                      </template>
                     </b-tab>
                   </b-tabs>
                 </b-col>
@@ -73,8 +73,8 @@ Authors: Shamal Faily
                 <b-col sm="4">
                   <b-table striped small bordered :fields="roleTableFields" :items="environmentRoles">
                     <!-- eslint-disable-next-line -->
-                    <template v-slot:head(roleactions)="data"> 
-                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRole"/> 
+                    <template v-slot:head(roleactions)="data">
+                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRole"/>
                     </template>
                     <template v-slot:cell(roleactions)="row">
                       <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteRole(row.item)"/>
@@ -84,8 +84,8 @@ Authors: Shamal Faily
                 <b-col sm="4">
                   <b-table striped small bordered :fields="motiveTableFields" :items="environmentMotives">
                     <!-- eslint-disable-next-line -->
-                    <template v-slot:head(motiveactions)="data"> 
-                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addMotive"/> 
+                    <template v-slot:head(motiveactions)="data">
+                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addMotive"/>
                     </template>
                     <template v-slot:cell(motiveactions)="row">
                       <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteMotive(row.item)"/>
@@ -95,8 +95,8 @@ Authors: Shamal Faily
                 <b-col sm="4">
                   <b-table striped small bordered :fields="capabilityTableFields" :items="environmentCapabilities">
                     <!-- eslint-disable-next-line -->
-                    <template v-slot:head(capabilityactions)="data"> 
-                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addCapability"/> 
+                    <template v-slot:head(capabilityactions)="data">
+                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addCapability"/>
                     </template>
                     <template v-slot:cell(capabilityactions)="row">
                       <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteCapability(row.item)"/>
@@ -107,7 +107,7 @@ Authors: Shamal Faily
             </b-card>
           </b-container>
         </b-row>
-      </b-card> 
+      </b-card>
       </b-container>
       <b-container fluid>
         <b-form-row>
@@ -116,7 +116,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -216,7 +216,7 @@ export default {
       });
     },
     addRole() {
-      this.$refs.roleDialog.show();  
+      this.$refs.roleDialog.show();
     },
     addAttackerRole(data) {
       this.objt.theEnvironmentProperties[this.envPropIndex].theRoles.push(data);
@@ -231,13 +231,13 @@ export default {
       this.objt.theEnvironmentProperties[this.envPropIndex].theRoles = this.objt.theEnvironmentProperties[this.envPropIndex].theRoles.filter(role => (role != item.name));
     },
     addMotive() {
-      this.$refs.motiveDialog.show();  
+      this.$refs.motiveDialog.show();
     },
     deleteMotive(item) {
       this.objt.theEnvironmentProperties[this.envPropIndex].theMotives = this.objt.theEnvironmentProperties[this.envPropIndex].theMotives.filter(motive => (motive != item.name));
     },
     addCapability() {
-      this.$refs.capabilityDialog.show();  
+      this.$refs.capabilityDialog.show();
     },
     deleteCapability(item) {
       this.objt.theEnvironmentProperties[this.envPropIndex].theCapabilities = this.objt.theEnvironmentProperties[this.envPropIndex].theCapabilities.filter(cap => (cap.name != item.name));

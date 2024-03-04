@@ -24,14 +24,14 @@ export default {
         {key: 'propactions', label : ''},
         {key: 'name' , label : 'Property'},
         {key: 'value', label : 'Value'},
-        {key: 'rationale', label : 'Rationale'} 
+        {key: 'rationale', label : 'Rationale'}
       ],
       selectedProperty : {}
     }
   },
   computed : {
     notNone() {
-      return this.objt.theProperties != undefined ? 
+      return this.objt.theProperties != undefined ?
         this.objt.theProperties.filter(prop => prop.value != 'None') : (
           this.objt.theEnvironmentProperties.length > 0 && this.envPropIndex >= 0 && this.objt.theEnvironmentProperties[this.envPropIndex] != undefined ? this.objt.theEnvironmentProperties[this.envPropIndex].theProperties.filter(prop => prop.value != 'None') : []
         );
@@ -69,7 +69,7 @@ export default {
     updateProperty : function(updProp) {
       const theProperties = (this.objt.theProperties != undefined ? this.objt.theProperties : this.objt.theEnvironmentProperties[this.envPropIndex].theProperties);
 
-      theProperties.map(prop => { 
+      theProperties.map(prop => {
         if (prop.name == updProp.name) {
           prop.value = updProp.value;
           prop.rationale = updProp.rationale;
@@ -79,7 +79,7 @@ export default {
     clearProperty(item) {
       const theProperties = (this.objt.theProperties != undefined ? this.objt.theProperties : this.objt.theEnvironmentProperties[this.envPropIndex].theProperties);
 
-      theProperties.map(prop => { 
+      theProperties.map(prop => {
         if (prop.name == item.name) {
           prop.value = 'None';
           prop.rationale = 'None';
@@ -89,7 +89,7 @@ export default {
     viewProperty(data) {
       this.selectedProperty = JSON.parse(JSON.stringify(data));
       this.selectedProperty['update'] = true;
-      this.$refs.propertyDialog.show();  
+      this.$refs.propertyDialog.show();
     },
     addProperty() {
       this.selectedProperty = {'name' : '','value' : '','rationale' : ''};
@@ -97,7 +97,7 @@ export default {
       const theProperties = (this.objt.theProperties != undefined ? this.objt.theProperties : this.objt.theEnvironmentProperties[this.envPropIndex].theProperties);
       this.selectedProperty['propertyNames'] = theProperties.filter(prop => (prop.value == 'None')).map(prop => prop.name);
       this.selectedProperty['name'] = this.selectedProperty['propertyNames'].length > 0 ? this.selectedProperty['propertyNames'][0] : '';
-      this.$refs.propertyDialog.show();  
+      this.$refs.propertyDialog.show();
     },
   }
 }

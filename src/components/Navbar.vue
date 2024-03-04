@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,10 +17,10 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
-  <b-navbar toggleable="md" type="dark" variant="dark"> 
+  <b-navbar toggleable="md" type="dark" variant="dark">
     <b-navbar-brand href="#">CAIRIS</b-navbar-brand>
     <b-navbar-nav>
       <b-nav-item :to="{name: 'home'}">Home</b-nav-item>

@@ -21,7 +21,7 @@ export default {
   computed : {
     concernAssociations() {
       return this.objt.theConcernAssociations != undefined ? this.objt.theConcernAssociations : (
-        this.objt.theEnvironmentProperties.length > 0 ? this.objt.theEnvironmentProperties[this.envPropIndex].theConcernAssociations : [] 
+        this.objt.theEnvironmentProperties.length > 0 ? this.objt.theEnvironmentProperties[this.envPropIndex].theConcernAssociations : []
       )
     }
   },
@@ -56,18 +56,18 @@ export default {
   },
   methods : {
     addConcern() {
-      this.$refs.assetDialog.show();  
+      this.$refs.assetDialog.show();
     },
     viewConcernAssociation(data,index) {
       this.selectedConcernAssociation['index'] = index;
       this.selectedConcernAssociation['association'] = JSON.parse(JSON.stringify(data));
       this.selectedConcernAssociation['update'] = true;
-      this.$refs.concernAssociationDialog.show();  
+      this.$refs.concernAssociationDialog.show();
     },
     addConcernAssociation() {
       this.selectedConcernAssociation['association'] = {theSource : '', theSourceNry : '', theLinkVerb : '', theTargetNry: '', theTarget : ''};
       this.selectedConcernAssociation['update'] = false;
-      this.$refs.concernAssociationDialog.show();  
+      this.$refs.concernAssociationDialog.show();
     },
     updateConcernAssociation : function(updAssoc) {
       const theConcernAssociations = (this.objt.theConcernAssociations != undefined ? this.objt.theConcernAssociations : this.objt.theEnvironmentProperties[this.envPropIndex].theConcernAssociations);

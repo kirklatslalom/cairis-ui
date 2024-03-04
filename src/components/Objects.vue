@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,18 +17,18 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="objects">
     <b-breadcrumb :items="breadCrumbItems" />
-    <dimension-modal v-if="this.dimension == 'architectural_pattern'" ref="environmentDialog" dimension="noncomposite_environment" v-on:dimension-modal-update="viewWeaknessAnalysis"/> 
-    <dimension-modal v-if="this.dimension == 'security_pattern'" ref="spEnvDialog" dimension="noncomposite_environment" v-on:dimension-modal-update="applySecurityPattern"/> 
-    <dimension-modal v-if="this.dimension == 'countermeasure'" ref="spRmDialog" :dimensionUrl="spRmUrl" label="Situated security pattern" v-on:dimension-modal-update="removeSecurityPattern"/> 
+    <dimension-modal v-if="this.dimension == 'architectural_pattern'" ref="environmentDialog" dimension="noncomposite_environment" v-on:dimension-modal-update="viewWeaknessAnalysis"/>
+    <dimension-modal v-if="this.dimension == 'security_pattern'" ref="spEnvDialog" dimension="noncomposite_environment" v-on:dimension-modal-update="applySecurityPattern"/>
+    <dimension-modal v-if="this.dimension == 'countermeasure'" ref="spRmDialog" :dimensionUrl="spRmUrl" label="Situated security pattern" v-on:dimension-modal-update="removeSecurityPattern"/>
     <object-dependency-modal ref="depDialog" :dependencies="objectDependencies" v-on:object-dependency-ok="deleteDependencies" />
     <add-trace-modal v-if="selectedTraceabilityObject != ''" ref="traceDialog" :dimension="dimension" :tobject="selectedTraceabilityObject" :isFrom="isPostTraceability" />
     <weakness-analysis-modal ref="waDialog" :architecturalPattern="itemName" :environment="thePatternEnvironment" v-on:weakness-analysis-confirm="applyArchitecturalPattern"/>
-    <directory-modal ref="dirDialog" v-if="dimension == 'threat' || dimension == 'vulnerability'" :dimension="dimension" v-on:directory-modal-update="addDirectoryEntry"/> 
+    <directory-modal ref="dirDialog" v-if="dimension == 'threat' || dimension == 'vulnerability'" :dimension="dimension" v-on:directory-modal-update="addDirectoryEntry"/>
     <situate-countermeasure-modal ref="scDialog" :countermeasure="itemName" v-on:situate-countermeasure-update="applySituateCountermeasure"/>
     <b-card no-body>
       <b-container v-if="environmentSpecificValueType" fluid>
@@ -43,7 +43,7 @@ Authors: Shamal Faily
       <b-table b-table striped small hover :fields="fieldList" :items="items" @row-clicked="objectClicked">
         <!-- eslint-disable-next-line -->
         <template v-slot:head(objectsactions)= "data">
-          <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addObject"/> 
+          <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addObject"/>
         </template>
         <template v-slot:cell(objectsactions)="row">
           <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteObject(row)"/>
@@ -71,7 +71,7 @@ Authors: Shamal Faily
         </template>
         <!-- eslint-disable-next-line -->
         <template v-slot:head(introduceaction)="data">
-          <font-awesome-icon icon="plus" :style="{color: 'blue'}" @click.stop="introduceDirectoryEntry"/> 
+          <font-awesome-icon icon="plus" :style="{color: 'blue'}" @click.stop="introduceDirectoryEntry"/>
         </template>
       </b-table>
     </b-card>
@@ -127,7 +127,7 @@ export default {
         {text : 'Asset', value : 'asset'}
       ]
     }
-  }, 
+  },
   watch : {
     getUrl : 'reloadObjects'
   },
@@ -203,7 +203,7 @@ export default {
           case 'trust_boundary':
             this.$router.push({ name: 'objectview', params: {dimension: this.dimName, objectName: row.theName, objectsLabel: this.theObjectViewParameters.objectsLabel, componentFile: this.theObjectViewParameters.componentFile, updatePath: this.theObjectViewParameters.updatePath, createPath: this.theObjectViewParameters.createPath}});
             break;
-          default: 
+          default:
             this.$router.push({ name: this.dimName, params : {objectName: row.theName}});
             break;
         }
@@ -378,7 +378,7 @@ export default {
         case 'threat_value':
           deleteUrl += this.theEnvironmentName + '/name/' + this.selectedObject;
           break;
-        default: 
+        default:
           deleteUrl += JSON.parse(JSON.stringify(this.selectedObject));
           break;
       }

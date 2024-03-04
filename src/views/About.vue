@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-jumbotron id="about" header="CAIRIS" :lead="theVersion" container-fluid />
@@ -47,6 +47,6 @@ export default {
       EventBus.$emit('operation-failure',error)
     })
   }
-}      
+}
 
 </script>

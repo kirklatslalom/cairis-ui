@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
   <div class="logout">
   </div>
@@ -41,7 +41,7 @@ export default {
     .then(response => {
       EventBus.$emit('operation-success',response.data.message);
       this.$store.state.session = '';
-      window.open(this.$store.state.url + '/login','_self');     
+      window.open(this.$store.state.url + '/login','_self');
     })
     .catch((error) => {
       EventBus.$emit('operation-failure',error);

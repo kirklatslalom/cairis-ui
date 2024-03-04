@@ -1,6 +1,6 @@
-const testData = { 
+const testData = {
 asset : {
-  theName : 'Clinical Data', 
+  theName : 'Clinical Data',
   theType : 'Information',
   theShortCode : 'CD',
   theDescription: 'Clinical Data',
@@ -129,7 +129,7 @@ attacker : {
     {theEnvironmentName : 'Psychosis',
      theRoles : ['Social Engineer'],
      theMotives : ["Headlines/press"],
-     theCapabilities : [{name: 'Resources/Funding', value: 'Low'}]} 
+     theCapabilities : [{name: 'Resources/Funding', value: 'Low'}]}
   ]
 },
 domainproperty : {

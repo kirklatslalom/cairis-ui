@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="importview">
@@ -29,7 +29,7 @@ Authors: Shamal Faily
     </p>
     <b-form class="vld-parent">
       <loading :active.sync="isLoading" is-full-page></loading>
-      <b-breadcrumb :items="bcItems" /> 
+      <b-breadcrumb :items="bcItems" />
       <b-container fluid>
         <b-card bg-variant="light">
           <b-form-group label="Model" label-class="text-md-left" label-cols="3" label-for="theModelSelect">
@@ -71,7 +71,7 @@ Authors: Shamal Faily
             </b-card>
           </div>
         </b-card>
-      </b-container> 
+      </b-container>
       <b-container fluid>
         <b-form-row>
           <b-col md="4" offset-md="5" >
@@ -79,7 +79,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
 
   </div>

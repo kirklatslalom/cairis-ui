@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,10 +17,10 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
   <div class="user_goal">
-    <dimension-modal ref="goalDialog" dimension="goal" :existing="objt.theRelatedGoals" v-on:dimension-modal-update="addRelatedGoal"/> 
+    <dimension-modal ref="goalDialog" dimension="goal" :existing="objt.theRelatedGoals" v-on:dimension-modal-update="addRelatedGoal"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -58,8 +58,8 @@ Authors: Shamal Faily
         </b-form-group>
         <b-table striped small bordered :fields="goalTableFields" :items="systemGoals">
           <!-- eslint-disable-next-line -->
-          <template v-slot:head(goalactions)="data"> 
-            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addGoal"/> 
+          <template v-slot:head(goalactions)="data">
+            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addGoal"/>
           </template>
           <template v-slot:cell(goalactions)="row">
             <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteRelatedGoal(row.item)"/>
@@ -74,7 +74,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -188,7 +188,7 @@ export default {
       }
     },
     addGoal(){
-      this.$refs.goalDialog.show();  
+      this.$refs.goalDialog.show();
     },
     addRelatedGoal(item) {
       this.objt.theRelatedGoals.push(item);

@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,11 +17,11 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
   <div class="persona">
-    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addPersonaEnvironmentProperty"/> 
-    <dimension-modal ref="roleDialog" dimension="role" :existing="environmentRoles" v-on:dimension-modal-update="addPersonaRole"/> 
+    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addPersonaEnvironmentProperty"/>
+    <dimension-modal ref="roleDialog" dimension="role" :existing="environmentRoles" v-on:dimension-modal-update="addPersonaRole"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -33,7 +33,7 @@ Authors: Shamal Faily
         <b-card no-body>
         <b-row>
           <b-col md=2>
-            <b-img :src="personaImage" rounded center fluid-grow @click="imageClicked" /> 
+            <b-img :src="personaImage" rounded center fluid-grow @click="imageClicked" />
             <p><input type="file" ref="personaimageupload" style="display: none" @change="imageSelected"></p>
           </b-col>
           <b-col md=10>
@@ -92,17 +92,17 @@ Authors: Shamal Faily
           <b-card header="Environments" no-body class="text-left">
             <template slot="header">
               <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addEnvironment"/> Environment
-            </template> 
+            </template>
             <b-row>
               <b-col sm="12">
                 <b-tabs pills v-model="envPropIndex">
                   <b-tab v-for="envProp in this.objt.theEnvironmentProperties" :key="envProp.theEnvironmentName" :title=envProp.theName>
                     <template slot="title">
                       <font-awesome-icon icon="minus" :style="{color: 'red'}" @click="deleteEnvironment(envProp.theEnvironmentName)"/>  {{envProp.theEnvironmentName}}
-                    </template> 
-                  </b-tab> 
+                    </template>
+                  </b-tab>
                  </b-tabs>
-               </b-col> 
+               </b-col>
              </b-row>
              <b-row v-if="this.objt.theEnvironmentProperties.length">
                <b-col sm="12">
@@ -117,8 +117,8 @@ Authors: Shamal Faily
                        <b-col>
                          <b-table striped small bordered :fields="roleTableFields" :items="environmentRoles">
                            <!-- eslint-disable-next-line -->
-                           <template v-slot:head(roleactions)="data"> 
-                             <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRole(data)"/> 
+                           <template v-slot:head(roleactions)="data">
+                             <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRole(data)"/>
                            </template>
                            <template v-slot:cell(roleactions)="row">
                              <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteRole(row.item)"/>
@@ -144,7 +144,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -197,7 +197,7 @@ export default {
     },
     isAssumption : {
       get : function() {
-        return this.objt.isAssumption == 1 ? true : false; 
+        return this.objt.isAssumption == 1 ? true : false;
       },
       set : function(value) {
         this.objt.isAssumption = (value ? 1 : 0);
@@ -251,7 +251,7 @@ export default {
       });
     },
     addRole() {
-      this.$refs.roleDialog.show();  
+      this.$refs.roleDialog.show();
     },
     addPersonaRole(data) {
       this.objt.theEnvironmentProperties[this.envPropIndex].theRoles.push(data);

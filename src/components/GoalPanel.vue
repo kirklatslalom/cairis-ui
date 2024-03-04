@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="goalpanel">
@@ -43,7 +43,7 @@ Authors: Shamal Faily
         </b-form-textarea>
       </b-form-group>
       <b-table bordered small :items="concerns" :fields="concernTableFields">
-      </b-table> 
+      </b-table>
     </b-container>
   </div>
 </template>

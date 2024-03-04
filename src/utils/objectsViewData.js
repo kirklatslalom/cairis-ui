@@ -18,7 +18,7 @@
 
     Authors: Shamal Faily */
 
-const objectsViewData = { 
+const objectsViewData = {
 
 architecturalpattern : {
   bcItems : [{text: 'Home', to: {name: 'home'}},{text: 'Architectural patterns', to: {name: 'objectsview', params : {dimension: 'architecturalpattern'}}}],
@@ -35,7 +35,7 @@ architecturalpattern : {
 },
 asset : {
   bcItems : [{text: 'Home', to: {name: 'home'}},{text: 'Assets', to: {name: 'objectsview', params : {dimension: 'asset'}}}],
-  objectsFields :[ 
+  objectsFields :[
     {key: 'objectsactions', label : ''},
     {key: 'theName', label : 'Asset', sortable: true },
     {key: 'theType', label : 'Type', sortable: true},
@@ -157,7 +157,7 @@ environment : {
 },
 externaldocument : {
   bcItems : [{text: 'Home', to: {name: 'home'}},{text: 'External documents', to: {name: 'objectsview', params : {dimension: 'externaldocument'}}}],
-  objectsFields : [ 
+  objectsFields : [
     {key: 'objectsactions', label : ''},
     {key: 'theName', label : 'Name', sortable: true},
     {key: 'theDescription', label : 'Description'}
@@ -244,7 +244,7 @@ personacharacteristic : {
 },
 policy_statement : {
   bcItems : [{text: 'Home', to: {name: 'home'}},{text: 'Policy statements', to: {name: 'objectsview', params : {dimension: 'policy_statement'}}}],
-  objectsFields : [ 
+  objectsFields : [
     {key: 'objectsactions', label : ''},
     {key: 'theEnvironmentName', label : 'Environment', sortable: true},
     {key: 'theGoalName', label : 'Goal', sortable: true},

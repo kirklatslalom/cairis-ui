@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,12 +17,12 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="locations">
-    <instance-modal ref="objtDialog" instanceType="asset" :locationInstance="selectedAssetInstance" v-on:instance-update="updateObject"/> 
-    <instance-modal ref="personDialog" instanceType="persona" :locationInstance="selectedPersonaInstance" v-on:instance-update="updatePerson"/> 
+    <instance-modal ref="objtDialog" instanceType="asset" :locationInstance="selectedAssetInstance" v-on:instance-update="updateObject"/>
+    <instance-modal ref="personDialog" instanceType="persona" :locationInstance="selectedPersonaInstance" v-on:instance-update="updatePerson"/>
     <link-modal ref="linkDialog" :locations="locationNames" v-on:link-update="addLocationLink" />
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
@@ -45,7 +45,7 @@ Authors: Shamal Faily
           <b-card header="Location" no-body class="text-left">
             <template slot="header">
               <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addLocation"/> Location
-            </template> 
+            </template>
             <b-container fluid v-if="objt.theLocations.length > 0">
               <b-row md="12">
                 <b-container fluid>
@@ -53,7 +53,7 @@ Authors: Shamal Faily
                     <b-tab v-for="loc in objt.theLocations" :key="loc.theName" :title=loc.theName>
                       <template slot="title">
                         <font-awesome-icon icon="minus" :style="{color: 'red'}" @click="deleteLocation(loc.theName)"/>  {{loc.theName}}
-                      </template> 
+                      </template>
                       <b-row md="12">
                         <b-container fluid>
                         <b-form-group label="Name" label-class="font-weight-bold text-md-left" label-for="theLocationNameInput">
@@ -71,12 +71,12 @@ Authors: Shamal Faily
                                   <b-table striped bordered small hover :items="objects" :fields="objectTableFields" @row-clicked="viewObject">
                                     <!-- eslint-disable-next-line -->
                                     <template v-slot:head(objectactions)="data">
-                                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addObject"/> 
+                                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addObject"/>
                                     </template>
                                     <template v-slot:cell(objectactions)="row">
                                       <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteObject(row.index)"/>
                                     </template>
-                                  </b-table> 
+                                  </b-table>
                                 </b-col>
                               </b-row>
                             </b-card>
@@ -88,12 +88,12 @@ Authors: Shamal Faily
                                   <b-table striped bordered small hover :items="people" :fields="personTableFields" @row-clicked="viewPerson">
                                     <!-- eslint-disable-next-line -->
                                     <template v-slot:head(personactions)="data">
-                                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addPerson"/> 
+                                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addPerson"/>
                                     </template>
                                     <template v-slot:cell(personactions)="row">
                                       <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deletePerson(row.index)"/>
                                     </template>
-                                  </b-table> 
+                                  </b-table>
                                 </b-col>
                               </b-row>
                             </b-card>
@@ -105,12 +105,12 @@ Authors: Shamal Faily
                                   <b-table striped bordered small hover :items="links" :fields="linkTableFields">
                                     <!-- eslint-disable-next-line -->
                                     <template v-slot:head(linkactions)="data">
-                                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addLink"/> 
+                                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addLink"/>
                                     </template>
                                     <template v-slot:cell(linkactions)="row">
                                       <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteLink(row.index)"/>
                                     </template>
-                                  </b-table> 
+                                  </b-table>
                                 </b-col>
                               </b-row>
                             </b-card>
@@ -132,7 +132,7 @@ Authors: Shamal Faily
               <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
             </b-col>
           </b-form-row>
-        </b-container> 
+        </b-container>
       </b-container>
     </b-form>
   </div>
@@ -192,19 +192,19 @@ export default {
       selectedAssetInstance : {
         update : false,
         instance : {
-          theName : '', 
+          theName : '',
           theAsset : ''
          }
       },
       selectedPersonaInstance : {
         update : false,
         instance : {
-          theName : '', 
+          theName : '',
           thePersona : ''
          }
       },
     }
-  }, 
+  },
   methods: {
     checkForm() {
       this.errors = []
@@ -247,7 +247,7 @@ export default {
     addObject() {
       this.selectedAssetInstance['instance'] = {theName: '', theAsset: ''};
       this.selectedAssetInstance['update'] = false;
-      this.$refs.objtDialog.show();  
+      this.$refs.objtDialog.show();
     },
     deleteObject(index) {
       this.objt.theLocations[this.locationIndex].theAssetInstances.splice(index,1);
@@ -256,7 +256,7 @@ export default {
       this.selectedAssetInstance['index'] = index
       this.selectedAssetInstance['instance'] = JSON.parse(JSON.stringify(data));
       this.selectedAssetInstance['update'] = true;
-      this.$refs.objtDialog.show();  
+      this.$refs.objtDialog.show();
     },
     updateObject : function(updInst) {
       if (updInst.update) {
@@ -269,7 +269,7 @@ export default {
     addPerson() {
       this.selectedPersonaInstance['instance'] = {theName: '', thePersona: ''};
       this.selectedPersonaInstance['update'] = false;
-      this.$refs.personDialog.show();  
+      this.$refs.personDialog.show();
     },
     deletePerson(index) {
       this.objt.theLocations[this.locationIndex].thePersonaInstances.splice(index,1);
@@ -278,7 +278,7 @@ export default {
       this.selectedPersonaInstance['index'] = index
       this.selectedPersonaInstance['instance'] = JSON.parse(JSON.stringify(data));
       this.selectedPersonaInstance['update'] = true;
-      this.$refs.personDialog.show();  
+      this.$refs.personDialog.show();
     },
     updatePerson : function(updInst) {
       if (updInst.update) {
@@ -289,7 +289,7 @@ export default {
       }
     },
     addLink() {
-      this.$refs.linkDialog.show();  
+      this.$refs.linkDialog.show();
     },
     deleteLink(index) {
       const originName = this.objt.theLocations[this.locationIndex].theName;

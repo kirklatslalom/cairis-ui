@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,12 +17,12 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="trustboundary">
-    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addTrustBoundaryEnvironmentProperty"/> 
-    <trust-boundary-component-modal ref="compDialog" :environment="environmentName" v-on:trust-boundary-component-modal-update="addTrustBoundaryComponent"/> 
+    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addTrustBoundaryEnvironmentProperty"/>
+    <trust-boundary-component-modal ref="compDialog" :environment="environmentName" v-on:trust-boundary-component-modal-update="addTrustBoundaryComponent"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -65,17 +65,17 @@ Authors: Shamal Faily
         <b-card header="Environments" class="text-left">
           <template slot="header">
             <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addEnvironment"/> Environment
-          </template> 
+          </template>
           <b-row>
             <b-col sm="12">
               <b-tabs pills v-model="envPropIndex">
                 <b-tab v-for="envProp in this.objt.theEnvironmentProperties" :key="envProp.theEnvironmentName" :title=envProp.theName>
                   <template slot="title">
                     <font-awesome-icon icon="minus" :style="{color: 'red'}" @click="deleteEnvironment(envProp.theEnvironmentName)"/>  {{envProp.theEnvironmentName}}
-                  </template> 
-                </b-tab> 
+                  </template>
+                </b-tab>
                </b-tabs>
-             </b-col> 
+             </b-col>
           </b-row>
           <b-row v-if="this.objt.theEnvironmentProperties.length">
             <b-col sm="12">
@@ -84,15 +84,15 @@ Authors: Shamal Faily
               </b-form-group>
               <b-table striped bordered small :fields="componentTableFields" :items="components">
                 <!-- eslint-disable-next-line -->
-                <template v-slot:head(componentactions)="data"> 
-                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addComponent"/> 
+                <template v-slot:head(componentactions)="data">
+                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addComponent"/>
                 </template>
                 <template v-slot:cell(componentactions)="row">
                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteComponent(row.index)"/>
                 </template>
               </b-table>
             </b-col>
-          </b-row> 
+          </b-row>
         </b-card>
       </b-container>
       <b-container fluid>
@@ -102,7 +102,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -160,7 +160,7 @@ export default {
         {key: 'theType', label : 'Type', sortable: true}
       ]
     }
-  }, 
+  },
   methods: {
     checkForm() {
       this.errors = []
@@ -207,11 +207,11 @@ export default {
     },
     addEnvironment(evt) {
       evt.preventDefault();
-      this.$refs.environmentDialog.show();  
+      this.$refs.environmentDialog.show();
     },
     addComponent(evt) {
       evt.preventDefault();
-      this.$refs.compDialog.show();  
+      this.$refs.compDialog.show();
     },
     addTrustBoundaryEnvironmentProperty : function(envName) {
       this.addEnvironmentProperty({

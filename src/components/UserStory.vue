@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
   <div class="userstory">
     <p v-if="errors.length">
@@ -26,10 +26,10 @@ Authors: Shamal Faily
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
     </p>
-    <value-modal ref="criteriaDialog" :value="selectedCriteria" v-on:value-update="uac"/> 
+    <value-modal ref="criteriaDialog" :value="selectedCriteria" v-on:value-update="uac"/>
     <b-form>
       <b-container fluid>
-        <b-card bg-variant="light" no body> 
+        <b-card bg-variant="light" no body>
           <b-row>
             <b-col md="4">
               <b-form-group label="Name" label-class="font-weight-bold text-md-left" label-for="theNameInput">
@@ -60,7 +60,7 @@ Authors: Shamal Faily
             </b-col>
             <b-col md="3">
               <b-form-group label="Why" label-class="font-weight-bold text-md-left" label-for="theWhySelect">
-                <dimension-select :dimensionUrl='ugUrl' v-on:dimension-select-change="whySelected" v-on:dimension-items-updated="whyLoaded" /> 
+                <dimension-select :dimensionUrl='ugUrl' v-on:dimension-select-change="whySelected" v-on:dimension-items-updated="whyLoaded" />
               </b-form-group>
             </b-col>
           </b-row>
@@ -74,16 +74,16 @@ Authors: Shamal Faily
           <b-row>
             <b-table striped bordered small hover :items="acceptanceCriteria" :fields=acceptanceCriteriaTableFields @row-clicked="viewAcceptanceCriteria">
               <!-- eslint-disable-next-line -->
-              <template v-slot:head(acceptancecriteriaactions)="data"> 
-                <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addAcceptanceCriteria"/> 
-              </template> 
+              <template v-slot:head(acceptancecriteriaactions)="data">
+                <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addAcceptanceCriteria"/>
+              </template>
               <template v-slot:cell(acceptancecriteriaactions)="row">
                 <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteAcceptanceCriteria(row.index)"/>
-              </template> 
+              </template>
             </b-table>
           </b-row>
 
-        </b-card> 
+        </b-card>
       </b-container>
       <b-container fluid>
         <b-form-row>
@@ -92,7 +92,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -210,12 +210,12 @@ export default {
       this.selectedCriteria['index'] = index;
       this.selectedCriteria['value'] = data.name;
       this.selectedCriteria['update'] = true;
-      this.$refs.criteriaDialog.show();  
+      this.$refs.criteriaDialog.show();
     },
     addAcceptanceCriteria() {
       this.selectedCriteria['value'] = '';
       this.selectedCriteria['update'] = false;
-      this.$refs.criteriaDialog.show();  
+      this.$refs.criteriaDialog.show();
     },
     uac : function(updAc) {
       if (updAc.update) {

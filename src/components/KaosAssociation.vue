@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
   <div class="kaosassociation">
     <p v-if="errors.length">
@@ -28,7 +28,7 @@ Authors: Shamal Faily
     </p>
     <b-form>
       <b-container fluid>
-      <b-card bg-variant="light" no body> 
+      <b-card bg-variant="light" no body>
         <b-row>
           <b-col md=12>
             <b-container v-if="objt != undefined" fluid>
@@ -46,7 +46,7 @@ Authors: Shamal Faily
                   </b-form-group>
                 </b-col>
               </b-row>
-              <b-row> 
+              <b-row>
                 <b-col md="12">
                   <dimension-select id="theGoalSelect" ref="theGoalSelect" :is_disabled="disable" :environment='objt.theEnvironmentName' :dimension='theGoalType' :initial="objt.theGoal" v-on:dimension-select-change="goalSelected" v-on:dimension-items-updated="goalsLoaded" />
                 </b-col>
@@ -92,7 +92,7 @@ Authors: Shamal Faily
             </b-container>
           </b-col>
         </b-row>
-      </b-card> 
+      </b-card>
       </b-container>
       <b-container fluid>
         <b-form-row>
@@ -101,7 +101,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>

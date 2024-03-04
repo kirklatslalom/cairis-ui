@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,11 +17,11 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="kaosassociationview">
-    <b-breadcrumb :items="bcItems" /> 
+    <b-breadcrumb :items="bcItems" />
     <kaos-association :object="this.objt" :label="this.commitLabel" v-on:kaos-association-commit="commitKaosAssociation" />
   </div>
 </template>
@@ -50,18 +50,18 @@ export default {
     }
   },
   components : {
-    KaosAssociation 
+    KaosAssociation
   },
   data() {
     return {
       objt : {
-        theEnvironmentName : '', 
-        theGoalDimension : 'goal', 
-        theAssociationType : 'and', 
-        theGoal : '', 
-        theRationale : 'None', 
-        theSubGoalDimension : 'goal', 
-        theAlternativeId : 0, 
+        theEnvironmentName : '',
+        theGoalDimension : 'goal',
+        theAssociationType : 'and',
+        theGoal : '',
+        theRationale : 'None',
+        theSubGoalDimension : 'goal',
+        theAlternativeId : 0,
         theSubGoal : ''
       },
       commitLabel : 'Create'

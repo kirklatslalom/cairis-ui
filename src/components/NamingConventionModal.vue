@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-modal ref="ncDialog" :title="this.dialogTitle"  @ok="onOk">
@@ -26,7 +26,7 @@ Authors: Shamal Faily
       <ul>
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
-    </p> 
+    </p>
     <b-card no-body>
       <b-form-group label="Name" label-class="font-weight-bold text-md-left" label-cols="3" label-for="theNCNameInput">
         <b-form-input id="theNCNameInput" v-model="objt.name" type="text" required>
@@ -36,8 +36,8 @@ Authors: Shamal Faily
         <b-form-input id="theNCValueInput" v-model="objt.value" type="text" required>
         </b-form-input>
       </b-form-group>
-    </b-card> 
-  </b-modal> 
+    </b-card>
+  </b-modal>
 </template>
 
 <script>
@@ -86,7 +86,7 @@ Authors: Shamal Faily
         this.$refs.ncDialog.show();
       },
       onOk(evt) {
-        if (!this.checkForm()) { 
+        if (!this.checkForm()) {
           evt.preventDefault();
         }
         else {

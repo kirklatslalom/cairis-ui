@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-modal ref="participantDialog" :title="this.dialogTitle"  @ok="onOk">
@@ -26,7 +26,7 @@ Authors: Shamal Faily
       <ul>
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
-    </p> 
+    </p>
     <b-card>
       <b-form-group label="Task" label-class="font-weight-bold text-sm-left" label-cols="3" label-for="theTaskInput" >
         <b-form-input readonly id="theTaskInput" v-model="objt.theTask" />
@@ -47,7 +47,7 @@ Authors: Shamal Faily
         <b-form-select id="theGoalConflictSelect" v-model="objt.theGoalConflict" :options="selectOptions" class="mb-3" required />
       </b-form-group>
     </b-card>
-  </b-modal> 
+  </b-modal>
 </template>
 
 <script>

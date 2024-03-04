@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-modal ref="targetDialog" :title="this.dialogTitle"  @ok="onOk">
@@ -26,7 +26,7 @@ Authors: Shamal Faily
       <ul>
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
-    </p> 
+    </p>
     <b-card>
       <b-form-group label="Target" label-class="font-weight-bold text-sm-left" label-for="theTargetSelect" >
         <dimension-select v-if="countermeasureTargetUrl != ''" :dimensionUrl="countermeasureTargetUrl" :initial="this.countermeasureTarget.target.theName" v-on:dimension-select-change="targetSelected" v-on:dimension-items-updated="targetsLoaded" />
@@ -43,7 +43,7 @@ Authors: Shamal Faily
         <b-form-textarea id="theRationaleText" v-model="objt.theRationale" type="text" rows="3" max-rows="3" required />
       </b-form-group>
     </b-card>
-  </b-modal> 
+  </b-modal>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
   <div class="propertiesmodel">
     <p v-if="errors.length">
@@ -26,9 +26,9 @@ Authors: Shamal Faily
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
     </p>
-    <revision-modal ref="revisionDialog" v-on:revision-update="updateRevision"/> 
-    <contributor-modal ref="contributorDialog" :contributor="selectedContributor" v-on:contributor-update="updateContributor"/> 
-    <naming-convention-modal ref="ncDialog" :definition="selectedDefinition" v-on:naming-convention-update="updateDefinition"/> 
+    <revision-modal ref="revisionDialog" v-on:revision-update="updateRevision"/>
+    <contributor-modal ref="contributorDialog" :contributor="selectedContributor" v-on:contributor-update="updateContributor"/>
+    <naming-convention-modal ref="ncDialog" :definition="selectedDefinition" v-on:naming-convention-update="updateDefinition"/>
     <b-form>
       <b-card no-body>
         <b-tabs card>
@@ -66,7 +66,7 @@ Authors: Shamal Faily
           </b-tab>
           <b-tab title="Rich Picture">
             <b-container fluid>
-              <b-img :src="richPictureImage" rounded center fluid-grow @click="imageClicked" /> 
+              <b-img :src="richPictureImage" rounded center fluid-grow @click="imageClicked" />
               <p><input type="file" ref="richpictureupload" style="display: none" @change="imageSelected"></p>
             </b-container>
           </b-tab>
@@ -74,8 +74,8 @@ Authors: Shamal Faily
             <b-container fluid>
               <b-table striped small bordered :fields="conventionTableFields" :items="objt.definitions" @row-clicked="viewDefinition">
                 <!-- eslint-disable-next-line -->
-                <template v-slot:head(conventionactions)="data"> 
-                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addDefinition"/> 
+                <template v-slot:head(conventionactions)="data">
+                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addDefinition"/>
                 </template>
                 <template v-slot:cell(conventionactions)="row">
                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteDefinition(row.item)"/>
@@ -87,8 +87,8 @@ Authors: Shamal Faily
             <b-container fluid>
               <b-table striped small bordered :fields="contributorTableFields" :items="objt.contributions" @row-clicked="viewContributor">
                 <!-- eslint-disable-next-line -->
-                <template v-slot:head(contributionactions)="data"> 
-                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addContributor"/> 
+                <template v-slot:head(contributionactions)="data">
+                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addContributor"/>
                 </template>
                 <template v-slot:cell(contributionactions)="row">
                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteContributor(row.item)"/>
@@ -100,8 +100,8 @@ Authors: Shamal Faily
             <b-container fluid>
               <b-table striped small bordered :fields="revisionTableFields" :items="objt.revisions">
                 <!-- eslint-disable-next-line -->
-                <template v-slot:head(revisionactions)="data"> 
-                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRevision"/> 
+                <template v-slot:head(revisionactions)="data">
+                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRevision"/>
                 </template>
               </b-table>
             </b-container>
@@ -115,7 +115,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -172,7 +172,7 @@ export default {
         definition : {
           name : '',
           value : ''
-        } 
+        }
       },
       selectedContributor : {
         update : false,
@@ -202,13 +202,13 @@ export default {
     addDefinition() {
       this.selectedDefinition['definition'] = {name : '', value : ''};
       this.selectedDefinition['update'] = false;
-      this.$refs.ncDialog.show();  
+      this.$refs.ncDialog.show();
     },
     viewDefinition(item,index) {
       this.selectedDefinition['index'] = index
       this.selectedDefinition['definition'] = JSON.parse(JSON.stringify(item));
       this.selectedDefinition['update'] = true;
-      this.$refs.ncDialog.show();  
+      this.$refs.ncDialog.show();
     },
     updateDefinition(updDef) {
       if (updDef.update) {
@@ -224,13 +224,13 @@ export default {
     addContributor() {
       this.selectedContributor['contributor'] = {firstName : '', surname : '', affiliation : '', role : 'Participant'};
       this.selectedContributor['update'] = false;
-      this.$refs.contributorDialog.show();  
+      this.$refs.contributorDialog.show();
     },
     viewContributor(item,index) {
       this.selectedContributor['index'] = index
       this.selectedContributor['contributor'] = JSON.parse(JSON.stringify(item));
       this.selectedContributor['update'] = true;
-      this.$refs.contributorDialog.show();  
+      this.$refs.contributorDialog.show();
     },
     deleteContributor(item) {
       this.objt.contributions = this.objt.contributions.filter(cont => (cont.firstName != item.firstName && cont.surname != item.surname));

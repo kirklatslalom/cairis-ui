@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="requirementmodel">
@@ -30,7 +30,7 @@ Authors: Shamal Faily
         </b-col>
         <b-col md="5">
           <dimension-select id="requirementModelDimension" ref="requirementModelDimension" :dimension="theDimensionName" initial="all" includeall v-on:dimension-select-change="dimensionSelected" v-on:dimension-items-updated="dimensionsLoaded" />
-        </b-col> 
+        </b-col>
         <b-col md="5">
           <b-form-group label="Requirement" label-for="requirementModelRequirement" label-cols="3" >
             <dimension-select id="requirementModelRequirement" ref="requirementModelRequirement" :dimensionUrl="requirementsNameURI" initial="all" includeall v-on:dimension-select-change="requirementSelected" v-on:dimension-items-updated="requirementsLoaded" />
@@ -38,7 +38,7 @@ Authors: Shamal Faily
         </b-col>
       </b-row>
     </b-container>
-    </b-card> 
+    </b-card>
     <graphical-model :api="requirementModelURI" :jsonParameters="this.filterParameters" v-on:graphical-model-url="nodeClicked"/>
   </div>
 </template>

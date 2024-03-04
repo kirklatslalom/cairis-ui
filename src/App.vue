@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-container id="app" fluid>
@@ -26,7 +26,7 @@ Authors: Shamal Faily
       <b-col>
         <navbar/>
       </b-col>
-    </b-row> 
+    </b-row>
     <b-row>
       <b-col>
         <router-view/>
@@ -95,7 +95,7 @@ div {
 }
  #nav {
   padding: 30px;
-} 
+}
 
 #nav a {
   font-weight: bold;
@@ -107,7 +107,7 @@ div {
 }
 
 #content {
-  padding-bottom: 30px; 
+  padding-bottom: 30px;
 }
 
 </style>

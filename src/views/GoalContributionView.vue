@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,11 +17,11 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="goalcontributionview">
-    <b-breadcrumb :items="bcItems" /> 
+    <b-breadcrumb :items="bcItems" />
     <goal-contribution :object="this.objt" :label="this.commitLabel" v-on:goal-contribution-commit="commitGoalContribution" />
   </div>
 </template>
@@ -50,7 +50,7 @@ export default {
     }
   },
   components : {
-    GoalContribution 
+    GoalContribution
   },
   data() {
     return {

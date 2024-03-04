@@ -1,7 +1,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'; 
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {mount, createLocalVue} from '@vue/test-utils';
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -30,10 +30,10 @@ config.mocks['$store'] = {
 }
 describe('DomainProperty.vue', () => {
   it('Render role', () => {
-    const testRole = testData['role']; 
+    const testRole = testData['role'];
     const wrapper = mount(Role,{localVue, propsData : {object: testRole, label: 'Update'}});
     expect(wrapper.find('#theRoleInput').element.value).to.equal('Data Consumer');
     expect(wrapper.find('#theShortCodeInput').element.value).to.equal('DCON');
     expect(wrapper.find('#theDescriptionInput').element.value).to.equal('Uses NeuroGrid data');
-  }); 
+  });
 })

@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,10 +17,10 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
   <div class="environment">
-    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="objt.theEnvironments" v-on:dimension-modal-update="addSubEnvironment"/> 
+    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="objt.theEnvironments" v-on:dimension-modal-update="addSubEnvironment"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -29,7 +29,7 @@ Authors: Shamal Faily
     </p>
     <b-form>
       <b-container fluid>
-      <b-card bg-variant="light" no body> 
+      <b-card bg-variant="light" no body>
         <b-row>
             <b-col md="9">
               <b-form-group label="Environment" label-class="font-weight-bold text-md-left" label-col="3" label-for="theEnvironmentInput">
@@ -52,12 +52,12 @@ Authors: Shamal Faily
         <b-row>
           <b-col md="6">
             <b-table striped bordered small hover :items="environments" :fields=environmentTableFields>
-              <template v-slot:head(environmentactions)="data"> 
-                <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addEnvironment(data)"/> 
-              </template> 
+              <template v-slot:head(environmentactions)="data">
+                <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addEnvironment(data)"/>
+              </template>
               <template v-slot:cell(environmentactions)="row">
                 <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteEnvironment(row.index)"/>
-              </template> 
+              </template>
             </b-table>
           </b-col>
           <b-col md="3" v-if="this.objt.theEnvironments.length > 1">
@@ -75,7 +75,7 @@ Authors: Shamal Faily
           </b-col>
         </b-row>
 
-      </b-card> 
+      </b-card>
       </b-container>
       <b-container fluid>
         <b-form-row>
@@ -84,7 +84,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -154,7 +154,7 @@ export default {
       this.$router.push({ name: 'objectsview', params: {dimension: 'environment'}});
     },
     addEnvironment() {
-      this.$refs.environmentDialog.show();  
+      this.$refs.environmentDialog.show();
     },
     addSubEnvironment(data) {
       const oldEnvs = this.objt.theEnvironments.length;

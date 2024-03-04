@@ -1,7 +1,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'; 
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {mount, createLocalVue} from '@vue/test-utils';
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -30,10 +30,10 @@ config.mocks['$store'] = {
 }
 describe('Environment.vue', () => {
   it('Render environment', () => {
-    const testEnv = testData['environment']; 
+    const testEnv = testData['environment'];
     const wrapper = mount(Environment,{localVue, propsData : {object: testEnv, label: 'Update'}});
     expect(wrapper.find('#theEnvironmentInput').element.value).to.equal('Default');
     expect(wrapper.find('#theShortCodeInput').element.value).to.equal('DEF');
     expect(wrapper.find('#theDescription').element.value).to.equal('Default environment');
-  }); 
+  });
 })

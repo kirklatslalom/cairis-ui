@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,13 +17,13 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="fromtrello">
     <b-form class="vld-parent">
       <loading :active.sync="isLoading" is-full-page></loading>
-      <b-breadcrumb :items="bcItems" /> 
+      <b-breadcrumb :items="bcItems" />
       <b-container fluid>
         <p v-if="errors.length">
           <b>Please correct the following error(s):</b>
@@ -39,7 +39,7 @@ Authors: Shamal Faily
             <b-form-select id="thePersonaSelect" v-model="thePersonaName" :options="personaNames" class="mb-3" required />
           </b-form-group>
         </b-card>
-      </b-container> 
+      </b-container>
       <b-container fluid>
         <b-form-row>
           <b-col md="4" offset-md="5" >
@@ -47,7 +47,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
 
   </div>

@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <b-modal ref="obstacleDialog" title="Select dataflow obstacle"  @ok="onOk">
@@ -26,7 +26,7 @@ Authors: Shamal Faily
       <ul>
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
-    </p> 
+    </p>
     <b-card>
       <b-form-group label="Obstacle" label-for="obstacleSelect">
         <dimension-select id="obstacleSelect" :environment="this.selectedObject.environment" dimension="obstacle" :existing="this.existing" :initial="this.selectedObject.dataFlowObstacle.theObstacleName" v-on:dimension-select-change="obstacleSelected" v-on:dimension-items-updated="obstaclesLoaded" />
@@ -90,7 +90,7 @@ import DimensionSelect from '@/components/DimensionSelect.vue'
         }
         if (this.object.dataFlowObstacle.theContext.length == 0) {
           this.errors.push('Context is required');
-        }  
+        }
         if (!this.errors.length) {
           return true;
         }

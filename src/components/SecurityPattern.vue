@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,12 +17,12 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="securitypattern">
-    <component-association-modal ref="assocDialog" :componentAssociation="selectedAssociation" :isArchitecturalPattern='false' v-on:association-update="updateStructure"/> 
-    <dimension-modal ref="reqDialog" label="Template requirement" dimension="template_requirement" :existing="requirementNames" v-on:dimension-modal-update="addPatternRequirement"/> 
+    <component-association-modal ref="assocDialog" :componentAssociation="selectedAssociation" :isArchitecturalPattern='false' v-on:association-update="updateStructure"/>
+    <dimension-modal ref="reqDialog" label="Template requirement" dimension="template_requirement" :existing="requirementNames" v-on:dimension-modal-update="addPatternRequirement"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -60,7 +60,7 @@ Authors: Shamal Faily
                   </b-form-group>
                 </b-col>
               </b-row>
-            </b-card> 
+            </b-card>
           </b-tab>
           <b-tab title="Structure">
             <b-card bg-variant="light" no-body>
@@ -69,8 +69,8 @@ Authors: Shamal Faily
                   <b-col md="12">
                     <b-table striped bordered small hover :items="objt.theConcernAssociations" :fields=structureTableFields @row-clicked="viewStructure">
                       <!-- eslint-disable-next-line -->
-                      <template v-slot:head(structureactions)="data"> 
-                        <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addStructure"/> 
+                      <template v-slot:head(structureactions)="data">
+                        <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addStructure"/>
                       </template>
                       <template v-slot:cell(structureactions)="row">
                         <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteStructure(row.index)"/>
@@ -78,7 +78,7 @@ Authors: Shamal Faily
                     </b-table>
                   </b-col>
                 </b-row>
-              </b-container> 
+              </b-container>
             </b-card>
           </b-tab>
           <b-tab title="Requirements">
@@ -88,8 +88,8 @@ Authors: Shamal Faily
                   <b-col md="12">
                     <b-table striped bordered small hover :items="objt.theRequirements" :fields=requirementTableFields >
                       <!-- eslint-disable-next-line -->
-                      <template v-slot:head(requirementactions)="data"> 
-                        <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRequirement"/> 
+                      <template v-slot:head(requirementactions)="data">
+                        <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRequirement"/>
                       </template>
                       <template v-slot:cell(requirementactions)="row">
                         <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteRequirement(row.index)"/>
@@ -101,7 +101,7 @@ Authors: Shamal Faily
             </b-card>
           </b-tab>
         </b-tabs>
-      </b-card> 
+      </b-card>
       <b-container fluid>
         <b-form-row>
           <b-col md="4" offset-md="5" >
@@ -109,7 +109,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -162,20 +162,20 @@ export default {
       selectedAssociation : {
         update : false,
         association : {
-          theHeadAsset : '', 
-          theHeadAdornment : 'Association', 
-          theHeadNav : 0, 
-          theHeadNry : '*', 
-          theHeadRole: '', 
-          theTailRole : '', 
-          theTailNry : '*', 
-          theTailNav : 0, 
+          theHeadAsset : '',
+          theHeadAdornment : 'Association',
+          theHeadNav : 0,
+          theHeadNry : '*',
+          theHeadRole: '',
+          theTailRole : '',
+          theTailNry : '*',
+          theTailNav : 0,
           theTailAdornment : 'Association',
           theTailAsset : ''
          }
       }
     }
-  }, 
+  },
   methods: {
     checkForm() {
       this.errors = []
@@ -224,7 +224,7 @@ export default {
       this.objt.theRequirements.splice(index,1);
     },
     addRequirement() {
-      this.$refs.reqDialog.show();  
+      this.$refs.reqDialog.show();
     },
     addPatternRequirement(reqName) {
       axios.get('/api/template_requirements/name/' + reqName,{
@@ -244,7 +244,7 @@ export default {
     addStructure() {
       this.selectedAssociation['association'] = {theHeadAsset: '', theHeadNav : 0, theHeadAdornment : 'Association', theHeadNry : '*', theHeadRole: '', theTailRole : '', theTailNry : '*', theTailNav : 0, theTailAdornment : 'Association', theTailAsset : ''};
       this.selectedAssociation['update'] = false;
-      this.$refs.assocDialog.show();  
+      this.$refs.assocDialog.show();
     },
     deleteStructure(index) {
       this.objt.theConcernAssociations.splice(index,1);
@@ -261,7 +261,7 @@ export default {
       this.selectedAssociation['index'] = index
       this.selectedAssociation['association'] = JSON.parse(JSON.stringify(data));
       this.selectedAssociation['update'] = true;
-      this.$refs.assocDialog.show();  
+      this.$refs.assocDialog.show();
     },
   }
 }

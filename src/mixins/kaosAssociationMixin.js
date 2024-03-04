@@ -97,7 +97,7 @@ export default {
         "countermeasure,task" : [
           {'text' : 'And', 'value' : 'and'}
         ]
-      }    
+      }
     }
-  } 
+  }
 }

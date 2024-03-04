@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,11 +17,11 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
   <div class="dataflow">
-    <dimension-modal v-if="objt.theEnvironmentName != ''" ref="assetDialog" dimension="information_asset" :environment="objt.theEnvironmentName" :existing="objt.theAssets" v-on:dimension-modal-update="addDataFlowAsset"/> 
-    <dataflow-obstacle-modal v-if="objt.theEnvironmentName != ''" ref="obstacleDialog" :selectedObject="selectedObject" :existing="dataFlowObstacles" v-on:dataflow-obstacle-modal-update="updateDataFlowObstacle"/> 
+    <dimension-modal v-if="objt.theEnvironmentName != ''" ref="assetDialog" dimension="information_asset" :environment="objt.theEnvironmentName" :existing="objt.theAssets" v-on:dimension-modal-update="addDataFlowAsset"/>
+    <dataflow-obstacle-modal v-if="objt.theEnvironmentName != ''" ref="obstacleDialog" :selectedObject="selectedObject" :existing="dataFlowObstacles" v-on:dataflow-obstacle-modal-update="updateDataFlowObstacle"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -30,7 +30,7 @@ Authors: Shamal Faily
     </p>
     <b-form>
       <b-container fluid>
-      <b-card bg-variant="light" no body> 
+      <b-card bg-variant="light" no body>
         <b-row>
           <b-col md=12>
             <b-container v-if="objt != undefined" fluid>
@@ -80,8 +80,8 @@ Authors: Shamal Faily
                 <b-col md="12">
                   <b-table striped bordered small :fields="assetTableFields" :items="dataFlowAssets">
                     <!-- eslint-disable-next-line -->
-                    <template v-slot:head(assetactions)="data"> 
-                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addAsset"/> 
+                    <template v-slot:head(assetactions)="data">
+                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addAsset"/>
                     </template>
                     <template v-slot:cell(assetactions)="row">
                       <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteAsset(row.index)"/>
@@ -93,8 +93,8 @@ Authors: Shamal Faily
                 <b-col md="12">
                   <b-table striped bordered small :fields="obstacleTableFields" :items="objt.theObstacles" @row-clicked="viewDataFlowObstacle">
                     <!-- eslint-disable-next-line -->
-                    <template v-slot:head(obstacleactions)="data"> 
-                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addObstacle"/> 
+                    <template v-slot:head(obstacleactions)="data">
+                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addObstacle"/>
                     </template>
                     <template v-slot:cell(obstacleactions)="row">
                       <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteObstacle(row.index)"/>
@@ -112,7 +112,7 @@ Authors: Shamal Faily
             </b-container>
           </b-col>
         </b-row>
-      </b-card> 
+      </b-card>
       </b-container>
       <b-container fluid>
         <b-form-row>
@@ -121,7 +121,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -294,7 +294,7 @@ export default {
     },
     addAsset(evt) {
       evt.preventDefault();
-      this.$refs.assetDialog.show();  
+      this.$refs.assetDialog.show();
     },
     deleteAsset(index) {
       this.objt.theAssets.splice(index,1);
@@ -316,13 +316,13 @@ export default {
       this.selectedObject['dataFlowObstacle'] = JSON.parse(JSON.stringify(data));
       this.selectedObject['environment'] = this.objt.theEnvironmentName;
       this.selectedObject['update'] = true;
-      this.$refs.obstacleDialog.show();  
+      this.$refs.obstacleDialog.show();
     },
     addObstacle() {
       this.selectedObject['dataFlowObstacle'] = {theObstacleName : '', theKeyword : 'not applicable', theContext: ''};
       this.selectedObject['environment'] = this.objt.theEnvironmentName;
       this.selectedObject['update'] = false;
-      this.$refs.obstacleDialog.show();  
+      this.$refs.obstacleDialog.show();
     },
     updateDataFlowObstacle : function(updDfo) {
       if (updDfo.update) {

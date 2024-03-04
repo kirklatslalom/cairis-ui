@@ -18,7 +18,7 @@
 
     Authors: Shamal Faily */
 
-const objectViewParametersFactory = { 
+const objectViewParametersFactory = {
 
 architecturalpattern : {
   objectsLabel : 'Architectural patterns',

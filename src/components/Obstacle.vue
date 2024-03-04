@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,13 +17,13 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
   <div class="obstacle">
-    <dimension-modal v-if="objt.theEnvironmentProperties" ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addObstacleEnvironmentProperty"/> 
-    <dimension-modal v-if="objt.theEnvironmentProperties.length" ref="assetDialog" dimension="asset" :environment="environmentName" :existing="concernNames" v-on:dimension-modal-update="addObstacleConcern"/> 
-    <kaos-refinement-modal v-if="objt.theEnvironmentProperties.length" ref="obstacleRefinementDialog" :goalAssociation="selectedAssociation" refinementType="Obstacle" :source="objt.theName" v-on:kaos-refinement-update="updateObstacleRefinement"/> 
-    <kaos-refinement-modal v-if="objt.theEnvironmentProperties.length" ref="subObstacleRefinementDialog" :goalAssociation="selectedAssociation" refinementType="Sub-Obstacle" :source="objt.theName" v-on:kaos-refinement-update="updateSubObstacleRefinement"/> 
+    <dimension-modal v-if="objt.theEnvironmentProperties" ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addObstacleEnvironmentProperty"/>
+    <dimension-modal v-if="objt.theEnvironmentProperties.length" ref="assetDialog" dimension="asset" :environment="environmentName" :existing="concernNames" v-on:dimension-modal-update="addObstacleConcern"/>
+    <kaos-refinement-modal v-if="objt.theEnvironmentProperties.length" ref="obstacleRefinementDialog" :goalAssociation="selectedAssociation" refinementType="Obstacle" :source="objt.theName" v-on:kaos-refinement-update="updateObstacleRefinement"/>
+    <kaos-refinement-modal v-if="objt.theEnvironmentProperties.length" ref="subObstacleRefinementDialog" :goalAssociation="selectedAssociation" refinementType="Sub-Obstacle" :source="objt.theName" v-on:kaos-refinement-update="updateSubObstacleRefinement"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -31,7 +31,7 @@ Authors: Shamal Faily
       </ul>
     </p>
     <b-form>
-      <b-card bg-variant="light" no body> 
+      <b-card bg-variant="light" no body>
         <b-row>
           <b-col md="6">
             <b-form-group label="Obstacle" label-class="font-weight-bold text-md-left" label-for="theObstacleInput">
@@ -53,14 +53,14 @@ Authors: Shamal Faily
       <b-card header="Environments" no-body class="text-left">
         <template slot="header">
           <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addEnvironment"/> Environment
-        </template> 
+        </template>
         <b-row>
           <b-col md="12">
             <b-tabs pills v-model="envPropIndex">
               <b-tab v-for="envProp in objt.theEnvironmentProperties" :key="envProp.theEnvironmentName" :title=envProp.theName>
                 <template slot="title">
                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click="deleteEnvironment(envProp.theEnvironmentName)"/>  {{envProp.theEnvironmentName}}
-                </template> 
+                </template>
               </b-tab>
             </b-tabs>
           </b-col>
@@ -101,12 +101,12 @@ Authors: Shamal Faily
                       <b-col md="12">
                         <b-table striped bordered small hover :items="concerns" :fields=concernTableFields>
                           <!-- eslint-disable-next-line -->
-                          <template v-slot:head(concernactions)="data"> 
-                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addConcern"/> 
-                          </template> 
+                          <template v-slot:head(concernactions)="data">
+                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addConcern"/>
+                          </template>
                           <template v-slot:cell(concernactions)="row">
                             <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteConcern(row.index)"/>
-                          </template> 
+                          </template>
                         </b-table>
                       </b-col>
                     </b-row>
@@ -118,12 +118,12 @@ Authors: Shamal Faily
                       <b-col md="12">
                         <b-table striped bordered small hover :items="goalRefinements" :fields=goalRefinementTableFields @row-clicked="viewObstacleRefinement">
                           <!-- eslint-disable-next-line -->
-                          <template v-slot:head(obstaclerefinementactions)="data"> 
-                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addObstacleRefinement"/> 
-                          </template> 
+                          <template v-slot:head(obstaclerefinementactions)="data">
+                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addObstacleRefinement"/>
+                          </template>
                           <template v-slot:cell(obstaclerefinementactions)="row">
                             <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteObstacleRefinement(row.index)"/>
-                          </template> 
+                          </template>
                         </b-table>
                       </b-col>
                     </b-row>
@@ -135,12 +135,12 @@ Authors: Shamal Faily
                       <b-col md="12">
                         <b-table striped bordered small hover :items="subGoalRefinements" :fields=subGoalRefinementTableFields @row-clicked="viewSubObstacleRefinement">
                           <!-- eslint-disable-next-line -->
-                          <template v-slot:head(subobstaclerefinementactions)="data"> 
-                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addSubObstacleRefinement"/> 
-                          </template> 
+                          <template v-slot:head(subobstaclerefinementactions)="data">
+                            <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addSubObstacleRefinement"/>
+                          </template>
                           <template v-slot:cell(subobstaclerefinementactions)="row">
                             <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteSubObstacleRefinement(row.index)"/>
-                          </template> 
+                          </template>
                         </b-table>
                       </b-col>
                     </b-row>
@@ -150,7 +150,7 @@ Authors: Shamal Faily
             </b-card>
           </b-col>
         </b-row>
-      </b-card> 
+      </b-card>
       <b-container fluid>
         <b-form-row>
           <b-col md="4" offset-md="5" >
@@ -158,7 +158,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -210,7 +210,7 @@ export default {
     },
     probability : {
       get : function() {
-        return this.objt.theEnvironmentProperties.length > 0 ? this.objt.theEnvironmentProperties[this.envPropIndex].theProbability : 0 
+        return this.objt.theEnvironmentProperties.length > 0 ? this.objt.theEnvironmentProperties[this.envPropIndex].theProbability : 0
       },
       set : function(value) {
         this.objt.theEnvironmentProperties[this.envPropIndex].theProbability = value;
@@ -218,17 +218,17 @@ export default {
     },
     rationale : {
       get : function() {
-        return this.objt.theEnvironmentProperties.length > 0 ? this.objt.theEnvironmentProperties[this.envPropIndex].theProbabilityRationale : '' 
+        return this.objt.theEnvironmentProperties.length > 0 ? this.objt.theEnvironmentProperties[this.envPropIndex].theProbabilityRationale : ''
       },
       set : function(value) {
         this.objt.theEnvironmentProperties[this.envPropIndex].theProbabilityRationale = value;
       }
     },
     goalRefinements() {
-      return this.objt.theEnvironmentProperties.length > 0 ? this.objt.theEnvironmentProperties[this.envPropIndex].theGoalRefinements : [] 
+      return this.objt.theEnvironmentProperties.length > 0 ? this.objt.theEnvironmentProperties[this.envPropIndex].theGoalRefinements : []
     },
     subGoalRefinements() {
-      return this.objt.theEnvironmentProperties.length > 0 ? this.objt.theEnvironmentProperties[this.envPropIndex].theSubGoalRefinements : [] 
+      return this.objt.theEnvironmentProperties.length > 0 ? this.objt.theEnvironmentProperties[this.envPropIndex].theSubGoalRefinements : []
     }
   },
   data() {
@@ -261,14 +261,14 @@ export default {
         environment : '',
         update : false,
         association : {
-          theEndName : '', 
-          theEndType : 'obstacle', 
-          theRefType : 'and', 
-          isAlternate: 'No', 
+          theEndName : '',
+          theEndType : 'obstacle',
+          theRefType : 'and',
+          isAlternate: 'No',
           theRationale : ''
          }
       },
-      obstacleCategories : 
+      obstacleCategories :
         ['Confidentiality Threat',
          'Integrity Threat',
          'Availability Threat',
@@ -319,13 +319,13 @@ export default {
       this.selectedAssociation['association'] = JSON.parse(JSON.stringify(data));
       this.selectedAssociation['environment'] = this.objt.theEnvironmentProperties[this.envPropIndex].theEnvironmentName;
       this.selectedAssociation['update'] = true;
-      this.$refs.obstacleRefinementDialog.show();  
+      this.$refs.obstacleRefinementDialog.show();
     },
     addObstacleRefinement() {
       this.selectedAssociation['association'] = {theEndName : '', theEndType : 'obstacle', theRefType : 'and', isAlternate: 'No', theRationale : ''};
       this.selectedAssociation['environment'] = this.objt.theEnvironmentProperties[this.envPropIndex].theEnvironmentName;
       this.selectedAssociation['update'] = false;
-      this.$refs.obstacleRefinementDialog.show();  
+      this.$refs.obstacleRefinementDialog.show();
     },
     deleteObstacleRefinement(index) {
       this.objt.theEnvironmentProperties[this.envPropIndex].theGoalRefinements.splice(index,1);
@@ -335,13 +335,13 @@ export default {
       this.selectedAssociation['association'] = JSON.parse(JSON.stringify(data));
       this.selectedAssociation['environment'] = this.objt.theEnvironmentProperties[this.envPropIndex].theEnvironmentName;
       this.selectedAssociation['update'] = true;
-      this.$refs.subObstacleRefinementDialog.show();  
+      this.$refs.subObstacleRefinementDialog.show();
     },
     addSubObstacleRefinement() {
       this.selectedAssociation['association'] = {theEndName : '', theEndType : 'obstacle', theRefType : 'and', isAlternate: 'No', theRationale : ''};
       this.selectedAssociation['environment'] = this.objt.theEnvironmentProperties[this.envPropIndex].theEnvironmentName;
       this.selectedAssociation['update'] = false;
-      this.$refs.subObstacleRefinementDialog.show();  
+      this.$refs.subObstacleRefinementDialog.show();
     },
     updateObstacleRefinement : function(updAssoc) {
       if (updAssoc.update) {
@@ -364,7 +364,7 @@ export default {
     },
     addConcern() {
       this.showAssetDialog = true;
-      this.$refs.assetDialog.show();  
+      this.$refs.assetDialog.show();
     },
     addObstacleConcern(data) {
       this.objt.theEnvironmentProperties[this.envPropIndex].theConcerns.push(data);

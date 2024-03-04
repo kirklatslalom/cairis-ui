@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,12 +17,12 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="templateasset">
-    <property-modal ref="propertyDialog" :securityProperty="selectedProperty" v-on:property-update="updateProperty"/> 
-    <asset-interface-modal ref="assetInterfaceDialog" :assetInterface="selectedInterface" v-on:interface-update="updateAssetInterface"/> 
+    <property-modal ref="propertyDialog" :securityProperty="selectedProperty" v-on:property-update="updateProperty"/>
+    <asset-interface-modal ref="assetInterfaceDialog" :assetInterface="selectedInterface" v-on:interface-update="updateAssetInterface"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -82,14 +82,14 @@ Authors: Shamal Faily
                   </b-form-group>
                 </b-col>
               </b-row>
-            </b-card> 
+            </b-card>
           </b-tab>
           <b-tab title="Interfaces">
             <b-card bg-variant="light">
               <b-table striped small hover :items="objt.theInterfaces" :fields=interfaceTableFields @row-clicked="viewInterface">
                 <!-- eslint-disable-next-line -->
-                <template v-slot:head(intactions)="data"> 
-                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addInterface"/> 
+                <template v-slot:head(intactions)="data">
+                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addInterface"/>
                 </template>
                 <template v-slot:cell(intactions)="row">
                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteInterface(row.index)"/>
@@ -101,15 +101,15 @@ Authors: Shamal Faily
         <b-container fluid>
           <b-table striped small hover :items="notNone" :fields=propTableFields @row-clicked="viewProperty">
             <!-- eslint-disable-next-line -->
-            <template v-slot:head(propactions)="data"> 
-              <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addProperty"/> 
-            </template> 
+            <template v-slot:head(propactions)="data">
+              <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addProperty"/>
+            </template>
             <template v-slot:cell(propactions)="row">
               <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="clearProperty(row.item)"/>
-            </template> 
+            </template>
           </b-table>
         </b-container>
-      </b-card> 
+      </b-card>
       <b-container fluid>
         <b-form-row>
           <b-col md="4" offset-md="5" >
@@ -117,7 +117,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -173,10 +173,10 @@ export default {
         {key: 'theInterfaceName', label : 'Interface'},
         {key: 'theInterfaceType', label : 'Type'},
         {key: 'theAccessRight', label : 'Access Right'},
-        {key: 'thePrivilege', label : 'Privilege'} 
+        {key: 'thePrivilege', label : 'Privilege'}
       ]
     }
-  }, 
+  },
   methods: {
     checkForm() {
       this.errors = []
@@ -246,7 +246,7 @@ export default {
     addInterface() {
       this.selectedInterface['assetinterface'] = {theInterfaceName : '', theInterfaceType : '', theAccessRight : '', thePrivilege: ''};
       this.selectedInterface['update'] = false;
-      this.$refs.assetInterfaceDialog.show();  
+      this.$refs.assetInterfaceDialog.show();
     },
     deleteInterface(index) {
       this.objt.theInterfaces.splice(index,1);
@@ -255,7 +255,7 @@ export default {
       this.selectedInterface['index'] = index
       this.selectedInterface['assetinterface'] = JSON.parse(JSON.stringify(data));
       this.selectedInterface['update'] = true;
-      this.$refs.assetInterfaceDialog.show();  
+      this.$refs.assetInterfaceDialog.show();
     },
     updateAssetInterface : function(updIf) {
       if (updIf.update) {

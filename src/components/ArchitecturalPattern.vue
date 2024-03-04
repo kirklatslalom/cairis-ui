@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,16 +17,16 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="architecturalpattern">
-    <component-interface-modal ref="componentInterfaceDialog" :componentInterface="selectedInterface" v-on:interface-update="updateComponentInterface"/> 
-    <component-association-modal ref="componentAssociationDialog" :componentAssociation="selectedAssociation" v-on:association-update="updateComponentAssociation"/> 
-    <dimension-modal v-if="objt != undefined && this.objt.theComponents.length > 0" ref="reqDialog" dimension="template_requirement" :existing="objt.theComponents[this.componentIndex].theRequirements" v-on:dimension-modal-update="addComponentRequirement"/> 
-    <dimension-modal v-if="objt != undefined && this.objt.theComponents.length > 0" ref="goalDialog" dimension="template_goal" :existing="objt.theComponents[this.componentIndex].theGoals" v-on:dimension-modal-update="addComponentGoal"/> 
-    <component-goal-association-modal v-if="objt != undefined && this.objt.theComponents.length > 0" ref="goalAssocDialog" :goals="goalNames" :goalAssociation="selectedAssociation"  v-on:component-goal-association-update="updateComponentGoalAssociation"/> 
-    <connector-modal v-if="objt != undefined" ref="connectorDialog" :patternConnector="selectedConnector" :components="this.objt.theComponents"  v-on:connector-update="updateConnector"/> 
+    <component-interface-modal ref="componentInterfaceDialog" :componentInterface="selectedInterface" v-on:interface-update="updateComponentInterface"/>
+    <component-association-modal ref="componentAssociationDialog" :componentAssociation="selectedAssociation" v-on:association-update="updateComponentAssociation"/>
+    <dimension-modal v-if="objt != undefined && this.objt.theComponents.length > 0" ref="reqDialog" dimension="template_requirement" :existing="objt.theComponents[this.componentIndex].theRequirements" v-on:dimension-modal-update="addComponentRequirement"/>
+    <dimension-modal v-if="objt != undefined && this.objt.theComponents.length > 0" ref="goalDialog" dimension="template_goal" :existing="objt.theComponents[this.componentIndex].theGoals" v-on:dimension-modal-update="addComponentGoal"/>
+    <component-goal-association-modal v-if="objt != undefined && this.objt.theComponents.length > 0" ref="goalAssocDialog" :goals="goalNames" :goalAssociation="selectedAssociation"  v-on:component-goal-association-update="updateComponentGoalAssociation"/>
+    <connector-modal v-if="objt != undefined" ref="connectorDialog" :patternConnector="selectedConnector" :components="this.objt.theComponents"  v-on:connector-update="updateConnector"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -57,8 +57,8 @@ Authors: Shamal Faily
           <b-tabs card>
             <b-tab title="Components" active>
             <template slot="title">
-              <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addComponent"/> Component 
-            </template> 
+              <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addComponent"/> Component
+            </template>
               <b-container fluid v-if="objt.theComponents.length > 0">
                 <b-row md="12">
                   <b-container fluid>
@@ -67,7 +67,7 @@ Authors: Shamal Faily
                       <b-tab v-for="comp in this.objt.theComponents" :key="comp.theName" :title=comp.theName>
                         <template slot="title">
                           <font-awesome-icon icon="minus" :style="{color: 'red'}" @click="deleteComponent(comp.theName)"/>  {{comp.theName}}
-                        </template> 
+                        </template>
                         <b-tabs>
                           <b-tab title="Summary" active>
                             <b-card bg-variant="light">
@@ -91,8 +91,8 @@ Authors: Shamal Faily
                             <b-card bg-variant="light">
                               <b-table striped small hover :items="objt.theComponents[componentIndex].theInterfaces" :fields=interfaceTableFields @row-clicked="viewInterface">
                                 <!-- eslint-disable-next-line -->
-                                <template v-slot:head(intactions)="data"> 
-                                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addInterface"/> 
+                                <template v-slot:head(intactions)="data">
+                                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addInterface"/>
                                 </template>
                                 <template v-slot:cell(intactions)="row">
                                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteInterface(row.index)"/>
@@ -105,12 +105,12 @@ Authors: Shamal Faily
                               <b-table striped small hover :items="objt.theComponents[componentIndex].theStructure" :fields="structureTableFields" @row-clicked="viewComponentAssociation">
                                 <!-- eslint-disable-next-line -->
                                 <template v-slot:head(structureactions)="data">
-                                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addComponentAssociation"/> 
+                                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addComponentAssociation"/>
                                 </template>
                                 <template v-slot:cell(structureactions)="row">
                                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteComponentAssociation(row.index)"/>
                                 </template>
-                              </b-table> 
+                              </b-table>
                             </b-card>
                           </b-tab>
                           <b-tab title="Requirements">
@@ -118,12 +118,12 @@ Authors: Shamal Faily
                               <b-table striped small hover :items="requirements" :fields="requirementTableFields">
                                 <!-- eslint-disable-next-line -->
                                 <template v-slot:head(requirementactions)="data">
-                                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRequirement"/> 
+                                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRequirement"/>
                                 </template>
                                 <template v-slot:cell(requirementactions)="row">
                                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteComponentRequirement(row.index)"/>
                                 </template>
-                              </b-table> 
+                              </b-table>
                             </b-card>
                           </b-tab>
                           <b-tab title="Goals">
@@ -131,12 +131,12 @@ Authors: Shamal Faily
                               <b-table striped small hover :items="goals" :fields="goalTableFields">
                                 <!-- eslint-disable-next-line -->
                                 <template v-slot:head(goalactions)="data">
-                                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addGoal"/> 
+                                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addGoal"/>
                                 </template>
                                 <template v-slot:cell(goalactions)="row">
                                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteComponentGoal(row.index)"/>
                                 </template>
-                              </b-table> 
+                              </b-table>
                             </b-card>
                           </b-tab>
                           <b-tab title="Goal associations">
@@ -144,12 +144,12 @@ Authors: Shamal Faily
                               <b-table striped small hover :items="goalAssociations" :fields="goalAssociationTableFields" @row-clicked="viewComponentGoalAssociation">
                                 <!-- eslint-disable-next-line -->
                                 <template v-slot:head(goalassociationactions)="data">
-                                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addComponentGoalAssociation"/> 
+                                  <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addComponentGoalAssociation"/>
                                 </template>
                                 <template v-slot:cell(goalassociationactions)="row">
                                   <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteComponentGoalAssociation(row.index)"/>
                                 </template>
-                              </b-table> 
+                              </b-table>
                             </b-card>
                           </b-tab>
                         </b-tabs>
@@ -166,12 +166,12 @@ Authors: Shamal Faily
                   <b-table striped small hover :items="this.objt.theConnectors" :fields="connectorTableFields" @row-clicked="viewConnector">
                     <!-- eslint-disable-next-line -->
                     <template v-slot:head(connectoractions)="data">
-                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addConnector"/> 
+                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addConnector"/>
                     </template>
                     <template v-slot:cell(connectoractions)="row">
                       <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteConnector(row.index)"/>
                     </template>
-                  </b-table> 
+                  </b-table>
                 </b-card>
               </b-container>
             </b-tab>
@@ -185,7 +185,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -249,14 +249,14 @@ export default {
       selectedAssociation : {
         update : false,
         association : {
-          theHeadAsset : '', 
-          theHeadAdornment : 'Association', 
-          theHeadNav : 0, 
-          theHeadNry : '*', 
-          theHeadRole: '', 
-          theTailRole : '', 
-          theTailNry : '*', 
-          theTailNav : 0, 
+          theHeadAsset : '',
+          theHeadAdornment : 'Association',
+          theHeadNav : 0,
+          theHeadNry : '*',
+          theHeadRole: '',
+          theTailRole : '',
+          theTailNry : '*',
+          theTailNav : 0,
           theTailAdornment : 'Association',
           theTailAsset : ''
          }
@@ -289,7 +289,7 @@ export default {
         {key: 'theName', label : 'Interface', sortable: true},
         {key: 'theType', label : 'Type', sortable: true},
         {key: 'theAccessRight', label : 'Access Right', sortable: true},
-        {key: 'thePrivilege', label : 'Privilege', sortable: true} 
+        {key: 'thePrivilege', label : 'Privilege', sortable: true}
       ],
       structureTableFields : [
         {key: 'structureactions', label: ''},
@@ -333,7 +333,7 @@ export default {
         {key: 'theAccessRight', label: 'Access Right', sortable: true}
       ]
     }
-  }, 
+  },
   methods: {
     checkForm() {
       this.errors = []
@@ -387,7 +387,7 @@ export default {
     addInterface() {
       this.selectedInterface['componentinterface'] = {theName : '', theType : '', theAccessRight : '', thePrivilege: ''};
       this.selectedInterface['update'] = false;
-      this.$refs.componentInterfaceDialog.show();  
+      this.$refs.componentInterfaceDialog.show();
     },
     deleteInterface(index) {
       this.objt.theComponents[this.componentIndex].theInterfaces.splice(index,1);
@@ -396,7 +396,7 @@ export default {
       this.selectedInterface['index'] = index
       this.selectedInterface['componentinterface'] = JSON.parse(JSON.stringify(data));
       this.selectedInterface['update'] = true;
-      this.$refs.componentInterfaceDialog.show();  
+      this.$refs.componentInterfaceDialog.show();
     },
     updateComponentInterface : function(updIf) {
       if (updIf.update) {
@@ -409,7 +409,7 @@ export default {
     addComponentAssociation() {
       this.selectedAssociation['association'] = {theHeadAsset: '', theHeadNav : 0, theHeadAdornment : 'Association', theHeadNry : '*', theHeadRole: '', theTailRole : '', theTailNry : '*', theTailNav : 0, theTailAdornment : 'Association', theTailAsset : ''};
       this.selectedAssociation['update'] = false;
-      this.$refs.componentAssociationDialog.show();  
+      this.$refs.componentAssociationDialog.show();
     },
     deleteComponentAssociation(index) {
       this.objt.theComponents[this.componentIndex].theStructure.splice(index,1);
@@ -426,10 +426,10 @@ export default {
       this.selectedAssociation['index'] = index
       this.selectedAssociation['association'] = JSON.parse(JSON.stringify(data));
       this.selectedAssociation['update'] = true;
-      this.$refs.componentAssociationDialog.show();  
+      this.$refs.componentAssociationDialog.show();
     },
     addRequirement() {
-      this.$refs.reqDialog.show();  
+      this.$refs.reqDialog.show();
     },
     addComponentRequirement(data) {
       this.objt.theComponents[this.componentIndex].theRequirements.push(data);
@@ -438,7 +438,7 @@ export default {
       this.objt.theComponents[this.componentIndex].theRequirements.splice(index,1);
     },
     addGoal() {
-      this.$refs.goalDialog.show();  
+      this.$refs.goalDialog.show();
     },
     addComponentGoal(data) {
       this.objt.theComponents[this.componentIndex].theGoals.push(data);
@@ -449,7 +449,7 @@ export default {
     addComponentGoalAssociation() {
       this.selectedAssociation['association'] = {theGoalName: '', theRefType : 'and', theSubGoalName : '', theRationale : ''};
       this.selectedAssociation['update'] = false;
-      this.$refs.goalAssocDialog.show();  
+      this.$refs.goalAssocDialog.show();
     },
     deleteComponentGoalAssociation(index) {
       this.objt.theComponents[this.componentIndex].theGoalAssociations.splice(index,1);
@@ -466,7 +466,7 @@ export default {
       this.selectedAssociation['index'] = index
       this.selectedAssociation['association'] = JSON.parse(JSON.stringify(data));
       this.selectedAssociation['update'] = true;
-      this.$refs.goalAssocDialog.show();  
+      this.$refs.goalAssocDialog.show();
     },
     addConnector() {
       this.selectedConnector['connector'] = {
@@ -481,7 +481,7 @@ export default {
         theAccessRight : ''
       };
       this.selectedConnector['update'] = false;
-      this.$refs.connectorDialog.show();  
+      this.$refs.connectorDialog.show();
     },
     deleteConnector(index) {
       this.objt.theConnectors.splice(index,1);
@@ -498,7 +498,7 @@ export default {
       this.selectedConnector['index'] = index
       this.selectedConnector['connector'] = JSON.parse(JSON.stringify(data));
       this.selectedConnector['update'] = true;
-      this.$refs.connectorDialog.show();  
+      this.$refs.connectorDialog.show();
     }
   }
 }

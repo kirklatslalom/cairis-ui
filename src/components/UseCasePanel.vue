@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="usecasepanel">
@@ -31,7 +31,7 @@ Authors: Shamal Faily
         <b-form-textarea id="thePreconditions" v-model="preconditions" type="text" :rows=2 :max-rows="4" readonly />
       </b-form-group>
       <b-table bordered small :items="steps" :fields="stepTableFields">
-      </b-table> 
+      </b-table>
       <b-form-group label="Postconditions" label-class="font-weight-bold text-sm-left" label-for="thePostconditions" >
         <b-form-textarea id="thePostconditions" v-model="postconditions" type="text" :rows=2 :max-rows="4" readonly />
       </b-form-group>

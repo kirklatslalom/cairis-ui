@@ -36,7 +36,7 @@ export default {
     },
     addEnvironment(evt) {
       evt.preventDefault();
-      this.$refs.environmentDialog.show();  
+      this.$refs.environmentDialog.show();
     }
   }
 }

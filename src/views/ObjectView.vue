@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,11 +17,11 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="objectview">
-    <b-breadcrumb :items="bcItems" /> 
+    <b-breadcrumb :items="bcItems" />
     <component :is="componentLoader" :object="this.objt" :label="this.commitLabel" v-on:object-commit="commitNamedObject" />
   </div>
 </template>
@@ -77,7 +77,7 @@ export default {
       objt : undefined,
       commitLabel : 'Create'
     }
-  }, 
+  },
   beforeRouteEnter (to, from, next) {
     if (to.params.objectName == 'New ' + to.params.dimension) {
       next(vm => {

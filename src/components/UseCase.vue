@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,15 +17,15 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="usecase">
-    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addUseCaseEnvironmentProperty"/> 
-    <dimension-modal ref="actorDialog" dimension="role" :existing="actorNames" v-on:dimension-modal-update="addUseCaseActor"/> 
-    <step-modal v-if="objt.theEnvironmentProperties.length" ref="stepDialog" :usecaseStep="selectedStep" :usecaseActors="actorNames" :environment="environmentName" v-on:step-update="updateStep"/> 
-    <exception-modal v-if="objt.theEnvironmentProperties.length" ref="excDialog" :stepException="selectedException" :usecase="objt.theName" :environment="environmentName" v-on:exception-update="updateException"/> 
-    <reference-contribution-modal ref="rcDialog" :referenceContribution="selectedReferenceContribution" v-on:reference-contribution-update="updateReferenceContribution"/> 
+    <dimension-modal ref="environmentDialog" dimension="noncomposite_environment" :existing="environmentNames" v-on:dimension-modal-update="addUseCaseEnvironmentProperty"/>
+    <dimension-modal ref="actorDialog" dimension="role" :existing="actorNames" v-on:dimension-modal-update="addUseCaseActor"/>
+    <step-modal v-if="objt.theEnvironmentProperties.length" ref="stepDialog" :usecaseStep="selectedStep" :usecaseActors="actorNames" :environment="environmentName" v-on:step-update="updateStep"/>
+    <exception-modal v-if="objt.theEnvironmentProperties.length" ref="excDialog" :stepException="selectedException" :usecase="objt.theName" :environment="environmentName" v-on:exception-update="updateException"/>
+    <reference-contribution-modal ref="rcDialog" :referenceContribution="selectedReferenceContribution" v-on:reference-contribution-update="updateReferenceContribution"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -58,12 +58,12 @@ Authors: Shamal Faily
                 <b-col md="12">
                   <b-table striped bordered small hover :items="actors" :fields=actorTableFields>
                     <!-- eslint-disable-next-line -->
-                    <template v-slot:head(actorsactions)="data"> 
-                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addActor"/> 
-                    </template> 
+                    <template v-slot:head(actorsactions)="data">
+                      <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addActor"/>
+                    </template>
                     <template v-slot:cell(actorsactions)="row">
                       <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteActor(row.index)"/>
-                    </template> 
+                    </template>
                   </b-table>
                 </b-col>
               </b-row>
@@ -88,12 +88,12 @@ Authors: Shamal Faily
               <b-col md="12">
                 <b-table striped bordered small hover :items="contributions" :fields=contributionTableFields @row-clicked="viewContribution">
                   <!-- eslint-disable-next-line -->
-                  <template v-slot:head(contributionactions)="data"> 
-                    <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addContribution"/> 
-                  </template> 
+                  <template v-slot:head(contributionactions)="data">
+                    <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addContribution"/>
+                  </template>
                   <template v-slot:cell(contributionactions)="row">
                     <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteContribution(row.index)"/>
-                  </template> 
+                  </template>
                 </b-table>
               </b-col>
             </b-row>
@@ -104,17 +104,17 @@ Authors: Shamal Faily
         <b-card header="Environments" class="text-left">
           <template slot="header">
             <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addEnvironment"/> Environment
-          </template> 
+          </template>
           <b-row v-if="this.objt.theEnvironmentProperties.length">
             <b-col md="12">
               <b-tabs pills v-model="envPropIndex">
                 <b-tab v-for="envProp in this.objt.theEnvironmentProperties" :key="envProp.theEnvironmentName" :title=envProp.theName>
                   <template slot="title">
                     <font-awesome-icon icon="minus" :style="{color: 'red'}" @click="deleteEnvironment(envProp.theEnvironmentName)"/>  {{envProp.theEnvironmentName}}
-                  </template> 
-                </b-tab> 
+                  </template>
+                </b-tab>
                </b-tabs>
-             </b-col> 
+             </b-col>
           </b-row>
           <b-row v-if="this.objt.theEnvironmentProperties.length">
             <b-container fluid>
@@ -129,18 +129,18 @@ Authors: Shamal Faily
                   <b-col md="12">
                     <b-table striped bordered small hover :items="steps" :fields=stepTableFields @row-clicked="viewStep">
                       <!-- eslint-disable-next-line -->
-                      <template v-slot:head(stepsactions)="data"> 
-                        <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addStep"/> 
-                      </template> 
+                      <template v-slot:head(stepsactions)="data">
+                        <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addStep"/>
+                      </template>
                       <template v-slot:cell(stepsactions)="row">
                         <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteStep(row.index)"/>
-                      </template> 
+                      </template>
                       <template v-slot:cell(theExceptions)="row">
-                        {{ objt.theEnvironmentProperties.length > 0 && objt.theEnvironmentProperties[envPropIndex].theSteps.length > 0 && row.index != -1 && objt.theEnvironmentProperties[envPropIndex].theSteps[row.index].theExceptions.length > 0 ? objt.theEnvironmentProperties[envPropIndex].theSteps[row.index].theExceptions.map(exc => exc.theName).toString() : 'None' }} 
-                      </template> 
+                        {{ objt.theEnvironmentProperties.length > 0 && objt.theEnvironmentProperties[envPropIndex].theSteps.length > 0 && row.index != -1 && objt.theEnvironmentProperties[envPropIndex].theSteps[row.index].theExceptions.length > 0 ? objt.theEnvironmentProperties[envPropIndex].theSteps[row.index].theExceptions.map(exc => exc.theName).toString() : 'None' }}
+                      </template>
                       <template v-slot:cell(show_details)="row">
                         <b-button size="sm" @click="toggleExceptionDetails(row)" class="mr-2">
-                          {{ row.detailsShowing ? 'Hide' : 'Show'}} Exceptions 
+                          {{ row.detailsShowing ? 'Hide' : 'Show'}} Exceptions
                         </b-button>
                       </template>
                       <!-- eslint-disable-next-line -->
@@ -149,12 +149,12 @@ Authors: Shamal Faily
                           <b-row class="mb-12">
                             <b-table striped bordered small hover :items="exceptions" :fields=exceptionTableFields @row-clicked="viewException">
                               <!-- eslint-disable-next-line -->
-                              <template v-slot:head(exceptionsactions)="data"> 
-                                <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addException"/> 
-                              </template> 
+                              <template v-slot:head(exceptionsactions)="data">
+                                <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addException"/>
+                              </template>
                               <template v-slot:cell(exceptionsactions)="row">
                                 <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteException(row.index)"/>
-                              </template> 
+                              </template>
                             </b-table>
                           </b-row>
                         </b-card>
@@ -179,7 +179,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -303,7 +303,7 @@ export default {
         }
       }
     }
-  }, 
+  },
   methods: {
     checkForm() {
       this.errors = []
@@ -372,7 +372,7 @@ export default {
       });
     },
     addActor() {
-      this.$refs.actorDialog.show();  
+      this.$refs.actorDialog.show();
     },
     addUseCaseActor : function(newActor) {
       this.objt.theActors.push(newActor);
@@ -383,7 +383,7 @@ export default {
     addStep() {
       this.selectedStep['step'] = {theStepText : '',theActor : '',theActorType : 'role',theSynopsis : '',theExceptions : []};
       this.selectedStep['update'] = false;
-      this.$refs.stepDialog.show();  
+      this.$refs.stepDialog.show();
     },
     viewStep(row) {
       this.selectedStep['index'] = row.theIndex;
@@ -391,7 +391,7 @@ export default {
       const stepObjt = JSON.parse(JSON.stringify(this.objt.theEnvironmentProperties[this.envPropIndex].theSteps[row.theIndex]));
       this.selectedStep['step'] = stepObjt;
       this.selectedStep['update'] = true;
-      this.$refs.stepDialog.show();  
+      this.$refs.stepDialog.show();
     },
     updateStep : function(updStep) {
       if (updStep.update) {
@@ -407,14 +407,14 @@ export default {
     addException() {
       this.selectedException['exception'] = {theName : '',theCategoryName : '',theDescription : '',theDimensionType : 'none',theDimensionValue : ''};
       this.selectedException['update'] = false;
-      this.$refs.excDialog.show();  
+      this.$refs.excDialog.show();
     },
     viewException(row) {
       this.selectedException['index'] = row.theIndex;
       const excObjt = JSON.parse(JSON.stringify(this.objt.theEnvironmentProperties[this.envPropIndex].theSteps[this.theStepIndex].theExceptions[row.theIndex]));
       this.selectedException['exception'] = excObjt;
       this.selectedException['update'] = true;
-      this.$refs.excDialog.show();  
+      this.$refs.excDialog.show();
     },
     updateException : function(updExc) {
       if (updExc.update) {
@@ -451,14 +451,14 @@ export default {
     addContribution() {
       this.selectedReferenceContribution['referenceContribution'] = {theContributionTo : '',theReferenceContribution : {theMeansEnd : 'means', theContribution: 'SomePositive'}};
       this.selectedReferenceContribution['update'] = false;
-      this.$refs.rcDialog.show();  
+      this.$refs.rcDialog.show();
     },
     viewContribution(row,index) {
       this.selectedReferenceContribution['index'] = index;
       const rcObjt = JSON.parse(JSON.stringify(this.objt.theReferenceContributions[index]));
       this.selectedReferenceContribution['referenceContribution'] = rcObjt;
       this.selectedReferenceContribution['update'] = true;
-      this.$refs.rcDialog.show();  
+      this.$refs.rcDialog.show();
     },
     updateReferenceContribution : function(updRc) {
       if (updRc.update) {

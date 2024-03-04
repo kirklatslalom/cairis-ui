@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,7 +17,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="modelsummary">
@@ -28,7 +28,7 @@ Authors: Shamal Faily
       <b-card bg-variant="light">
       <b-tabs card pill>
         <b-tab title="Summary" active>
-          <b-container fluid> 
+          <b-container fluid>
           <b-row>
             <b-col sm="4">
               <div v-if="selectedEnvironment != ''">
@@ -48,11 +48,11 @@ Authors: Shamal Faily
                 <p><b>Risk Summary</b></p>
               </div>
             </b-col>
-          </b-row> 
+          </b-row>
           </b-container>
         </b-tab>
         <b-tab title="Threat Model">
-          <b-container fluid> 
+          <b-container fluid>
           <b-row>
             <b-col md="12">
               <b-table b-table striped bordered :items="this.entityTable">
@@ -77,7 +77,7 @@ Authors: Shamal Faily
               </b-table>
             </b-col>
           </b-row>
-          </b-container> 
+          </b-container>
         </b-tab>
       </b-tabs>
       </b-card>
@@ -100,21 +100,21 @@ export default {
   },
   computed : {
     vulnerabilitySummaryView() {
-      return {'labels' : this.theVulnerabilitySummary.map(vs => vs.theLabel), 
+      return {'labels' : this.theVulnerabilitySummary.map(vs => vs.theLabel),
               'datasets' : [
                 { data : this.theVulnerabilitySummary.map(vs => vs.theValue),
                   backgroundColor : this.theVulnerabilitySummary.map(vs => this.backgroundColor[vs.theLabel])}
                ]}
     },
     threatSummaryView() {
-      return {'labels' : this.theThreatSummary.map(ts => ts.theLabel), 
+      return {'labels' : this.theThreatSummary.map(ts => ts.theLabel),
               'datasets' : [
                 { data : this.theThreatSummary.map(ts => ts.theValue),
                   backgroundColor : this.theThreatSummary.map(ts => this.backgroundColor[ts.theLabel])}
                ]}
     },
     riskSummaryView() {
-      return {'labels' : this.theRiskSummary.map(rs => rs.theLabel), 
+      return {'labels' : this.theRiskSummary.map(rs => rs.theLabel),
               'datasets' : [
                 { data : this.theRiskSummary.map(rs => rs.theValue),
                   backgroundColor : this.theRiskSummary.map(rs => this.backgroundColor[rs.theLabel])}
@@ -128,7 +128,7 @@ export default {
           r[col.theProperty] = col.theThreats.toString()
         })
         return r
-      }) 
+      })
     },
     entityTable() {
       return this.theEntities.map(row => {
@@ -138,7 +138,7 @@ export default {
           r[col.theProperty] = col.theThreats.toString()
         })
         return r
-      }) 
+      })
     },
     datastoreTable() {
       return this.theDatastores.map(row => {
@@ -148,7 +148,7 @@ export default {
           r[col.theProperty] = col.theThreats.toString()
         })
         return r
-      }) 
+      })
     },
     dataflowTable() {
       return this.theDataflows.map(row => {
@@ -158,7 +158,7 @@ export default {
           r[col.theProperty] = col.theThreats.toString()
         })
         return r
-      }) 
+      })
     }
   },
   data() {

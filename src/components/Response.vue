@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,12 +17,12 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
 
   <div class="response">
-    <dimension-modal ref="environmentDialog" :dimensionUrl="riskEnvironmentsURI" label="Environment" :existing="environmentNames" v-on:dimension-modal-update="addResponseEnvironmentProperty"/> 
-    <role-cost-modal ref="rcDialog" :existing="transferRoleNames" v-on:role-cost-modal-update="addRoleCost"/> 
+    <dimension-modal ref="environmentDialog" :dimensionUrl="riskEnvironmentsURI" label="Environment" :existing="environmentNames" v-on:dimension-modal-update="addResponseEnvironmentProperty"/>
+    <role-cost-modal ref="rcDialog" :existing="transferRoleNames" v-on:role-cost-modal-update="addRoleCost"/>
     <p v-if="errors.length">
       <b>Please correct the following error(s):</b>
       <ul>
@@ -45,7 +45,7 @@ Authors: Shamal Faily
             </b-col>
             <b-col md="4">
               <b-form-group label="Risk" label-class="font-weight-bold text-md-left" label-for="theRiskSelect">
-                <dimension-select id="theRiskSelect" dimension='risk' :initial="objt.theRisk" v-on:dimension-select-change="riskSelected" v-on:dimension-items-updated="risksLoaded" /> 
+                <dimension-select id="theRiskSelect" dimension='risk' :initial="objt.theRisk" v-on:dimension-select-change="riskSelected" v-on:dimension-items-updated="risksLoaded" />
               </b-form-group>
             </b-col>
             <b-col md="4">
@@ -67,7 +67,7 @@ Authors: Shamal Faily
         <b-card header="Environments" class="text-left">
           <template slot="header">
             <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addEnvironment"/> Environment
-          </template> 
+          </template>
           <b-container v-if="this.objt.theResponseType == 'Accept'" fluid>
             <b-row>
               <b-col sm="12">
@@ -75,10 +75,10 @@ Authors: Shamal Faily
                   <b-tab v-for="envProp in this.objt.theEnvironmentProperties.accept" :key="envProp.theEnvironmentName" :title=envProp.theName>
                     <template slot="title">
                       <font-awesome-icon icon="minus" :style="{color: 'red'}" @click="deleteEnvironment(envPropIndex)"/>  {{envProp.theEnvironmentName}}
-                    </template> 
-                  </b-tab> 
+                    </template>
+                  </b-tab>
                  </b-tabs>
-               </b-col> 
+               </b-col>
             </b-row>
             <b-row v-if="this.objt.theEnvironmentProperties.accept.length > 0">
               <b-col sm="12">
@@ -97,7 +97,7 @@ Authors: Shamal Faily
                   <b-form-textarea id="theAcceptRationaleInput" v-model="acceptRationale" type="text" :rows=4 :max-rows=4 required />
                 </b-form-group>
               </b-col>
-            </b-row> 
+            </b-row>
           </b-container>
           <b-container v-if="this.objt.theResponseType == 'Transfer'" fluid>
             <b-row>
@@ -106,17 +106,17 @@ Authors: Shamal Faily
                   <b-tab v-for="envProp in this.objt.theEnvironmentProperties.transfer" :key="envProp.theEnvironmentName" :title=envProp.theName>
                     <template slot="title">
                       <font-awesome-icon icon="minus" :style="{color: 'red'}" @click="deleteEnvironment(envPropIndex)"/>  {{envProp.theEnvironmentName}}
-                    </template> 
-                  </b-tab> 
+                    </template>
+                  </b-tab>
                  </b-tabs>
-               </b-col> 
+               </b-col>
             </b-row>
             <b-row v-if="this.objt.theEnvironmentProperties.transfer.length > 0">
               <b-col md="12">
                 <b-table striped small bordered :fields="roleTableFields" :items="transferRoles">
                   <!-- eslint-disable-next-line -->
-                  <template v-slot:head(roleactions)="data"> 
-                    <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRole"/> 
+                  <template v-slot:head(roleactions)="data">
+                    <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addRole"/>
                   </template>
                   <template v-slot:cell(roleactions)="row">
                     <font-awesome-icon icon="minus" :style="{color: 'red'}" @click.stop="deleteRole(row.index)"/>
@@ -140,10 +140,10 @@ Authors: Shamal Faily
                   <b-tab v-for="envProp in this.objt.theEnvironmentProperties.mitigate" :key="envProp.theEnvironmentName" :title=envProp.theName>
                     <template slot="title">
                       <font-awesome-icon icon="minus" :style="{color: 'red'}" @click="deleteEnvironment(envPropIndex)"/>  {{envProp.theEnvironmentName}}
-                    </template> 
-                  </b-tab> 
+                    </template>
+                  </b-tab>
                  </b-tabs>
-               </b-col> 
+               </b-col>
             </b-row>
             <b-row v-if="this.objt.theEnvironmentProperties.mitigate.length > 0">
               <b-col md="12">
@@ -171,7 +171,7 @@ Authors: Shamal Faily
             <b-row v-if="reactResponse && this.objt.theEnvironmentProperties.mitigate.length > 0">
               <b-col md="12">
                 <b-form-group label="Detection Mechanism" label-class="font-weight-bold text-sm-left" label-for="theDetectionMechanismSelect" >
-                  <dimension-select id="theDetectionMechanismSelect" dimension='detection_mechanism' :initial="objt.theRisk" v-on:dimension-select-change="detectionMechanismSelected" /> 
+                  <dimension-select id="theDetectionMechanismSelect" dimension='detection_mechanism' :initial="objt.theRisk" v-on:dimension-select-change="detectionMechanismSelected" />
                 </b-form-group>
               </b-col>
             </b-row>
@@ -185,7 +185,7 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
+      </b-container>
     </b-form>
   </div>
 </template>
@@ -223,7 +223,7 @@ export default {
       return this.objt.theEnvironmentProperties.transfer != undefined && this.objt.theEnvironmentProperties.transfer.length > 0 ? this.objt.theEnvironmentProperties.transfer[this.envPropIndex].theRoles.map(r => r.roleName) : [];
     },
     environmentNames() {
-      return this.objt.theEnvironmentProperties.accept != undefined && this.objt.theEnvironmentProperties.accept.length > 0 ? this.objt.theEnvironmentProperties.accept.map(prop => prop.theEnvironmentName) 
+      return this.objt.theEnvironmentProperties.accept != undefined && this.objt.theEnvironmentProperties.accept.length > 0 ? this.objt.theEnvironmentProperties.accept.map(prop => prop.theEnvironmentName)
         : ( this.objt.theEnvironmentProperties.transfer != undefined && this.objt.theEnvironmentProperties.transfer.length > 0 ? this.objt.theEnvironmentProperties.transfer.map(prop => prop.theEnvironmentName)
              : ( this.objt.theEnvironmentProperties.mitigate != undefined && this.objt.theEnvironmentProperties.mitigate.length > 0 ? this.objt.theEnvironmentProperties.mitigate.map(prop => prop.theEnvironmentName) : [] )
         )
@@ -316,7 +316,7 @@ export default {
         {key: 'cost', label : 'Cost'}
       ]
     }
-  }, 
+  },
   methods: {
     checkForm() {
       this.errors = []
@@ -371,7 +371,7 @@ export default {
     },
     addEnvironment(evt) {
       evt.preventDefault();
-      this.$refs.environmentDialog.show();  
+      this.$refs.environmentDialog.show();
     },
     addResponseEnvironmentProperty : function(envName) {
       if (this.objt.theResponseType == 'Accept') {
@@ -420,7 +420,7 @@ export default {
       this.objt.theEnvironmentProperties.transfer[this.envPropIndex].theRoles.splice(index,1);
     },
     addRole() {
-      this.$refs.rcDialog.show();  
+      this.$refs.rcDialog.show();
     }
   }
 }

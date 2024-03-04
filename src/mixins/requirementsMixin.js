@@ -85,7 +85,7 @@ export default {
       for (const reqLabel of lbls) {
         promises.push(this.getRequirementLabel(urlPrefix + reqLabel + "?session_id=" + that.$store.state.session))
       }
-          
+
       axios.all(promises).then(function(results){
         results.forEach(function(response,idx){
           var req = response.data;

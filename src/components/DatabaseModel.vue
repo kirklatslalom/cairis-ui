@@ -1,5 +1,5 @@
 <template>
-<!--  
+<!--
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
 distributed with this work for additional information
@@ -17,21 +17,21 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 
-Authors: Shamal Faily 
+Authors: Shamal Faily
 -->
   <div class="databasemodel">
-    <new-database-modal ref="newDbDialog" v-on:new-database-modal-update="createDatabase"/> 
-    <new-id-modal ref="newIdDialog" v-on:new-id-modal-update="grantPermissionToId"/> 
-      <b-form class="vld-parent"> 
-      <loading :active.sync="isLoading" is-full-page /> 
+    <new-database-modal ref="newDbDialog" v-on:new-database-modal-update="createDatabase"/>
+    <new-id-modal ref="newIdDialog" v-on:new-id-modal-update="grantPermissionToId"/>
+      <b-form class="vld-parent">
+      <loading :active.sync="isLoading" is-full-page />
       <b-container fluid>
       <b-card bg-variant="light">
         <b-row>
           <b-col md="12">
             <b-table striped hover small bordered :fields="dbTableFields" :items="theDatabases" @row-clicked="openDatabase">
               <!-- eslint-disable-next-line -->
-              <template v-slot:head(dbactions)="data"> 
-                <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addDatabase"/> 
+              <template v-slot:head(dbactions)="data">
+                <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="addDatabase"/>
               </template>
               <!-- eslint-disable-next-line -->
               <template v-slot:cell(dbactions)="row">
@@ -49,8 +49,8 @@ Authors: Shamal Faily
                   <b-row class="mb-12">
                     <b-table striped hover small bordered :fields="permissionTableFields" :items="ids">
                       <!-- eslint-disable-next-line -->
-                      <template v-slot:head(permittedactions)="data"> 
-                        <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="grantPermission"/> 
+                      <template v-slot:head(permittedactions)="data">
+                        <font-awesome-icon icon="plus" :style="{color: 'green'}" @click.stop="grantPermission"/>
                       </template>
                       <!-- eslint-disable-next-line -->
                       <template v-slot:cell(permittedactions)="row">
@@ -72,8 +72,8 @@ Authors: Shamal Faily
             <b-button type="submit" variant="secondary" @click="onCancel">Cancel</b-button>
           </b-col>
         </b-form-row>
-      </b-container> 
-   </b-form> 
+      </b-container>
+   </b-form>
   </div>
 </template>
 
@@ -150,7 +150,7 @@ export default {
       this.$router.push({ name: 'home'});
     },
     addDatabase() {
-      this.$refs.newDbDialog.show();  
+      this.$refs.newDbDialog.show();
     },
     createDatabase(dbName) {
       const createUrl = this.$store.state.url + '/api/settings/database/' + dbName + '/create';
@@ -220,7 +220,7 @@ export default {
       });
     },
     grantPermission() {
-      this.$refs.newIdDialog.show();  
+      this.$refs.newIdDialog.show();
     },
     grantPermissionToId(userId) {
       this.changePermission(userId,'grant');

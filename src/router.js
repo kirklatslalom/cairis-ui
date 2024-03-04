@@ -199,7 +199,7 @@ export default new Router({
       name: 'requirement',
       component: () => import('./views/RequirementView.vue'),
       props: true
-    }, 
+    },
     {
       path: '/model/responsibility',
       name: 'responsibilitymodel',
